@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ChaosEngineAI — Local-first AI workstation</title>
+<meta name="description" content="ChaosEngineAI is a local-first desktop AI workstation. Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine." />
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.png" />
+<link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#top">
+    <img src="assets/logo-mark.png" alt="" class="brand-mark" />
+    <span>ChaosEngineAI</span>
+  </a>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#turboquant">TurboQuant</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#install">Install</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="assets/logo-mark.png" alt="ChaosEngineAI" class="hero-logo" />
+      <h1>Your local AI workstation.</h1>
+      <p class="lede">
+        Discover, convert, run, chat with and benchmark MLX &amp; GGUF models — entirely on your own machine.
+        Powered by <strong>TurboQuant</strong> KV cache compression for serious memory headroom.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#install">Get ChaosEngineAI</a>
+        <a class="btn ghost" href="#features">Explore features</a>
+      </div>
+      <p class="sub">macOS-first · experimental Linux &amp; Windows builds</p>
+    </div>
+    <div class="grid-bg" aria-hidden="true"></div>
+  </section>
+
+  <section id="features" class="section">
+    <h2>Everything you need, locally.</h2>
+    <p class="section-lede">A single desktop app that replaces a stack of scripts, notebooks and CLIs.</p>
+    <div class="features">
+      <div class="feature"><h3>Dashboard</h3><p>Live memory, CPU, runtime status, and headroom hints for your target model.</p></div>
+      <div class="feature"><h3>Discover</h3><p>Curated model families plus Hugging Face Hub search, filtered by capability.</p></div>
+      <div class="feature"><h3>My Models</h3><p>Recursive scan of local model directories — MLX and GGUF, with rich metadata.</p></div>
+      <div class="feature"><h3>Chat</h3><p>Threaded local chat with per-thread models, generation metrics and markdown.</p></div>
+      <div class="feature"><h3>Server</h3><p>Expose any loaded model as an OpenAI-compatible localhost API for your tools.</p></div>
+      <div class="feature"><h3>Benchmarks</h3><p>Compare cache profiles, throughput, quality and memory across configurations.</p></div>
+      <div class="feature"><h3>Conversion</h3><p>Import and quantize models into MLX with size and throughput previews.</p></div>
+      <div class="feature"><h3>Logs</h3><p>Searchable, filtered, multi-channel runtime visibility — chat, server, conversion.</p></div>
+      <div class="feature"><h3>Settings</h3><p>Manage model directories, ports, LAN access and launch defaults.</p></div>
+    </div>
+  </section>
+
+  <section id="turboquant" class="section dark">
+    <div class="tq">
+      <div>
+        <span class="tag">TurboQuant-MLX</span>
+        <h2>1–4 bit KV cache compression for MLX.</h2>
+        <p>
+          ChaosEngineAI ships with TurboQuant — adaptive layer-wise cache compression with FP16 edge layers,
+          randomized Hadamard rotations, optional fused attention and Metal-tuned kernels.
+          Run bigger contexts, on smaller machines, without giving up quality.
+        </p>
+        <ul class="bullets">
+          <li>Adaptive per-layer cache strategy</li>
+          <li>1, 2, 3 and 4-bit cache quantization</li>
+          <li>Optional fused attention path</li>
+          <li>Drop-in patches for <code>mlx-lm</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-row"><span>Cache</span><strong>TurboQuant TQ2</strong></div>
+        <div class="card-row"><span>FP16 edge layers</span><strong>4</strong></div>
+        <div class="card-row"><span>Compression</span><strong>~7×</strong></div>
+        <div class="card-row"><span>Throughput</span><strong>↑ vs f16</strong></div>
+        <div class="card-row"><span>Backend</span><strong>MLX · Metal</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="platforms" class="section">
+    <h2>Built for Apple Silicon. Open to more.</h2>
+    <div class="platforms">
+      <div class="plat primary"><h3>macOS</h3><p>First-class. Native Tauri shell, MLX worker, llama.cpp engine, signed &amp; notarized release flow.</p></div>
+      <div class="plat"><h3>Linux</h3><p>Experimental. Backend &amp; frontend run; GGUF via llama.cpp. MLX paths macOS-only.</p></div>
+      <div class="plat"><h3>Windows</h3><p>Experimental. Backend &amp; frontend run; GGUF via llama.cpp. MLX paths macOS-only.</p></div>
+    </div>
+  </section>
+
+  <section id="install" class="section dark">
+    <h2>Get started.</h2>
+    <p class="section-lede">Clone, install, and launch the desktop shell.</p>
+    <pre class="code"><code># backend
+python3 -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -e '.[desktop,mlx-lm]'
+
+# desktop
+cd desktop
+npm install
+npm run tauri:dev</code></pre>
+    <p class="sub">Apache 2.0 licensed.</p>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="y"></span> ChaosEngineAI · Apache 2.0</div>
+  <div>Local-first AI · Built with MLX, llama.cpp, Tauri</div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
