@@ -125,6 +125,7 @@
   function el(tag, attrs = {}, ...children) {
     const n = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
       if (k === 'class') n.className = v;
       else if (k === 'html') n.innerHTML = v;
       else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
