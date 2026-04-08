@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ChaosEngineAI — Local-first AI workstation</title>
 <meta name="description" content="ChaosEngineAI is a local-first desktop AI workstation. Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine." />
-<link rel="icon" type="image/svg+xml" href="assets/logo-mark.png" />
+<link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI — Local-first AI workstation" />
-<meta property="og:description" content="Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine. Powered by TurboQuant KV cache compression." />
-<meta property="og:url" content="https://chaosengine.ai/" />
-<meta property="og:image" content="https://chaosengine.ai/assets/og-image.png" />
+<meta property="og:description" content="Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine. Powered by TurboQuant adaptive quantization." />
+<meta property="og:url" content="https://chaosengineai.com/" />
+<meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ChaosEngineAI — Local-first AI workstation" />
 <meta name="twitter:description" content="Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine." />
-<meta name="twitter:image" content="https://chaosengine.ai/assets/og-image.png" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<meta name="twitter:image" content="https://chaosengineai.com/assets/og-image.png" />
+<link rel="stylesheet" href="styles.css?v=8" />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="cc576ff6-5db0-40a6-91dc-a39ac3b7d1ac"></script>
 </head>
 <body>
@@ -27,9 +27,9 @@
     <span>ChaosEngineAI</span>
   </a>
   <nav>
+    <a href="#tour">Tour</a>
     <a href="#features">Features</a>
     <a href="#turboquant">TurboQuant</a>
-    <a href="#platforms">Platforms</a>
     <a href="#install">Install</a>
   </nav>
 </header>
@@ -40,48 +40,61 @@
       <img src="assets/logo-mark.png" alt="ChaosEngineAI" class="hero-logo" />
       <h1>Your local AI workstation.</h1>
       <p class="lede">
-        Discover, convert, run, chat with and benchmark MLX &amp; GGUF models — entirely on your own machine.
-        Powered by <strong>TurboQuant</strong> KV cache compression for serious memory headroom.
+        Discover, download, convert, serve, chat with and benchmark open-weight LLMs —
+        all in one desktop app. Powered by <strong>llama.cpp</strong>, <strong>Apple MLX</strong>,
+        and <strong>TurboQuant</strong> adaptive quantization.
       </p>
       <div class="cta">
         <a class="btn primary" href="#download" data-download>Get ChaosEngineAI</a>
-        <a class="btn ghost" href="#features">Explore features</a>
+        <a class="btn ghost" href="#tour">See the tour</a>
       </div>
-      <p class="sub">macOS-first · experimental Linux &amp; Windows builds</p>
+      <p class="sub">macOS · Linux · Windows · signed in-app updates</p>
     </div>
     <div class="grid-bg" aria-hidden="true"></div>
   </section>
 
-  <section id="features" class="section">
-    <h2>Everything you need, locally.</h2>
-    <p class="section-lede">A single desktop app that replaces a stack of scripts, notebooks and CLIs.</p>
-    <div class="features">
-      <div class="feature"><h3>Dashboard</h3><p>Live memory, CPU, runtime status, and headroom hints for your target model.</p></div>
-      <div class="feature"><h3>Discover</h3><p>Curated model families plus Hugging Face Hub search, filtered by capability.</p></div>
-      <div class="feature"><h3>My Models</h3><p>Recursive scan of local model directories — MLX and GGUF, with rich metadata.</p></div>
-      <div class="feature"><h3>Chat</h3><p>Threaded local chat with per-thread models, generation metrics and markdown.</p></div>
-      <div class="feature"><h3>Server</h3><p>Expose any loaded model as an OpenAI-compatible localhost API for your tools.</p></div>
-      <div class="feature"><h3>Benchmarks</h3><p>Compare cache profiles, throughput, quality and memory across configurations.</p></div>
-      <div class="feature"><h3>Conversion</h3><p>Import and quantize models into MLX with size and throughput previews.</p></div>
-      <div class="feature"><h3>Logs</h3><p>Searchable, filtered, multi-channel runtime visibility — chat, server, conversion.</p></div>
-      <div class="feature"><h3>Settings</h3><p>Manage model directories, ports, LAN access and launch defaults.</p></div>
+  <section id="tour" class="section">
+    <h2>A tour of the app.</h2>
+    <p class="section-lede">Every screen, end-to-end — discover, launch, chat, serve, benchmark, convert.</p>
+    <div class="tour-frame">
+      <img src="assets/tour.gif" alt="ChaosEngineAI walkthrough" loading="lazy" />
     </div>
   </section>
 
-  <section id="turboquant" class="section dark">
+  <section id="features" class="section dark">
+    <h2>Everything you need, locally.</h2>
+    <p class="section-lede">A single desktop control plane that replaces a stack of scripts, notebooks and CLIs.</p>
+    <div class="features">
+      <div class="feature"><h3>Dashboard</h3><p>Backend health, engine, loaded model, hardware, and live warm-pool telemetry.</p></div>
+      <div class="feature"><h3>Discover</h3><p>Curated catalogs with capability tags — chat, coding, vision, reasoning, tools, multilingual.</p></div>
+      <div class="feature"><h3>My Models</h3><p>Local library sorted by name, format, size, context or modified date — one-click launch.</p></div>
+      <div class="feature"><h3>Chat</h3><p>Streaming multi-thread chat with document RAG attachments and image inputs for vision models.</p></div>
+      <div class="feature"><h3>Server</h3><p>OpenAI-compatible HTTP server with bind address, request stats and a built-in test panel.</p></div>
+      <div class="feature"><h3>Benchmarks</h3><p>Live tok/sec &amp; TTFT, prompt sets, full report cards, saved history with side-by-side diffs.</p></div>
+      <div class="feature"><h3>Conversion</h3><p>Hugging Face → MLX with optional TurboQuant adaptive quant. Layer-by-layer live progress.</p></div>
+      <div class="feature"><h3>Warm pool</h3><p>Recently-used models stay hot — subsequent loads are instant.</p></div>
+      <div class="feature"><h3>In-app updates</h3><p>Signed, verified, cross-platform. Launch → prompt → relaunch.</p></div>
+      <div class="feature"><h3>Logs</h3><p>Live tail of the backend stream — load events, server requests, errors — with level filters.</p></div>
+      <div class="feature"><h3>Settings</h3><p>Directories, default launch preferences, TurboQuant tuning, fused attention, FP16 layers.</p></div>
+      <div class="feature"><h3>Telemetry</h3><p>Backend health, engine in use, hardware, memory pressure — always one glance away.</p></div>
+    </div>
+  </section>
+
+  <section id="turboquant" class="section">
     <div class="tq">
       <div>
         <span class="tag">TurboQuant-MLX</span>
-        <h2>1–4 bit KV cache compression for MLX.</h2>
+        <h2>Adaptive quantization for Apple Silicon.</h2>
         <p>
-          ChaosEngineAI ships with TurboQuant — adaptive layer-wise cache compression with FP16 edge layers,
-          randomized Hadamard rotations, optional fused attention and Metal-tuned kernels.
-          Run bigger contexts, on smaller machines, without giving up quality.
+          ChaosEngineAI ships with TurboQuant — a custom MLX kernel package providing layer-adaptive
+          KV cache quantization, sparse-V attention, fused attention paths, and an asymmetric K/V
+          cache used by the conversion pipeline. Run bigger models in tighter memory budgets without
+          giving up quality.
         </p>
         <ul class="bullets">
           <li>Adaptive per-layer cache strategy</li>
           <li>1, 2, 3 and 4-bit cache quantization</li>
-          <li>Optional fused attention path</li>
+          <li>Sparse-V attention &amp; fused attention paths</li>
           <li>Drop-in patches for <code>mlx-lm</code></li>
         </ul>
       </div>
@@ -95,35 +108,50 @@
     </div>
   </section>
 
-  <section id="platforms" class="section">
-    <h2>Built for Apple Silicon. Open to more.</h2>
-    <div class="platforms">
-      <div class="plat primary"><h3>macOS</h3><p>First-class. Native Tauri shell, MLX worker, llama.cpp engine, signed &amp; notarized release flow.</p></div>
-      <div class="plat"><h3>Linux</h3><p>Experimental. Backend &amp; frontend run; GGUF via llama.cpp. MLX paths macOS-only.</p></div>
-      <div class="plat"><h3>Windows</h3><p>Experimental. Backend &amp; frontend run; GGUF via llama.cpp. MLX paths macOS-only.</p></div>
-    </div>
-  </section>
-
   <section id="install" class="section dark">
-    <h2>Get started.</h2>
-    <p class="section-lede">Clone, install, and launch the desktop shell.</p>
-    <pre class="code"><code># backend
-python3 -m venv .venv &amp;&amp; . .venv/bin/activate
-pip install -e '.[desktop,mlx-lm]'
-
-# desktop
-cd desktop
-npm install
-npm run tauri:dev</code></pre>
-    <p class="sub">Apache 2.0 licensed.</p>
+    <h2 id="download">Download &amp; install.</h2>
+    <p class="section-lede">Signed, cross-platform builds with in-app auto-updates from v0.4.20 onward.</p>
+    <div class="dl-grid dl-grid-4">
+      <a class="dl-tile" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest"><h3>macOS</h3><p>Apple Silicon · <code>.dmg</code> · signed &amp; notarized</p></a>
+      <a class="dl-tile" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest"><h3>Linux</h3><p><code>.AppImage</code> &amp; <code>.deb</code> · in-app updates</p></a>
+      <a class="dl-tile" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest"><h3>Windows</h3><p><code>x64-setup.exe</code> · NSIS installer</p></a>
+      <a class="dl-tile" href="https://github.com/cryptopoly/ChaosEngineAI#readme"><h3>Build from source</h3><p>Rust, Node 20+, Python 3.11+ · see README</p></a>
+    </div>
   </section>
 </main>
 
 <footer>
-  <div>© <span id="y"></span> ChaosEngineAI · Apache 2.0</div>
-  <div>Local-first AI · Built with MLX, llama.cpp, Tauri</div>
+  <!-- SISTER_SITES_START : remove this whole block (or set data-show="false") to hide -->
+  <div class="sister-sites" data-show="true">
+    <div class="sister-label">Also from this stable</div>
+    <div class="sister-list">
+      <a class="sister-hero" href="https://terminallyskill.com" target="_blank" rel="noopener">
+        <div class="sister-thumb"><img src="othersites/TerminallySKILL.png" alt="" loading="lazy" /></div>
+        <div class="sister-name">TerminallySKILL<span>.com</span></div>
+      </a>
+      <a href="https://satoshisnippets.com" target="_blank" rel="noopener">
+        <div class="sister-thumb"><img src="othersites/SatoshiSnippets.png" alt="" loading="lazy" /></div>
+        <div class="sister-name">SatoshiSnippets<span>.com</span></div>
+      </a>
+      <a href="https://clawmanager.ai" target="_blank" rel="noopener">
+        <div class="sister-thumb"><img src="othersites/ClawManager.png" alt="" loading="lazy" /></div>
+        <div class="sister-name">ClawManager<span>.AI</span></div>
+      </a>
+    </div>
+  </div>
+  <!-- SISTER_SITES_END -->
+  <div class="foot-main">
+    <div>© <span id="y"></span> ChaosEngineAI · built with MLX, llama.cpp &amp; Tauri</div>
+    <div><a href="https://github.com/cryptopoly/ChaosEngineAI">GitHub</a> · <a href="https://github.com/cryptopoly/ChaosEngineAI/releases">Releases</a></div>
+  </div>
 </footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // Easy hide: append ?nositer to URL, or set data-show="false" on .sister-sites above
+  if (new URLSearchParams(location.search).has('nositer')) {
+    document.querySelector('.sister-sites')?.setAttribute('data-show','false');
+  }
+</script>
 <script defer src="download.js?v=1"></script>
 </body>
 </html>
