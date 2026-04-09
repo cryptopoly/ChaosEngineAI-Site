@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ChaosEngineAI — Local-first AI workstation</title>
-<meta name="description" content="ChaosEngineAI is a local-first desktop AI workstation. Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine." />
+<meta name="description" content="ChaosEngineAI is a local-first desktop AI workstation. Discover, convert, run, chat with, benchmark, and generate images from open-weight models — all on your own machine." />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI — Local-first AI workstation" />
-<meta property="og:description" content="Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine. Powered by TurboQuant adaptive quantization." />
+<meta property="og:description" content="Discover, convert, run, chat with, benchmark, and generate images from open-weight models — all on your own machine. Powered by TurboQuant adaptive quantization." />
 <meta property="og:url" content="https://chaosengineai.com/" />
 <meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="ChaosEngineAI — Local-first AI workstation" />
 <meta name="twitter:description" content="Discover, convert, run, chat with, and benchmark MLX & GGUF models — all on your own machine." />
 <meta name="twitter:image" content="https://chaosengineai.com/assets/og-image.png" />
-<link rel="stylesheet" href="styles.css?v=8" />
+<link rel="stylesheet" href="styles.css?v=9" />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="cc576ff6-5db0-40a6-91dc-a39ac3b7d1ac"></script>
 </head>
 <body>
@@ -35,30 +35,29 @@
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="hero-inner">
-      <img src="assets/logo-mark.png" alt="ChaosEngineAI" class="hero-logo" />
-      <h1>Your local AI workstation.</h1>
-      <p class="lede">
-        Discover, download, convert, serve, chat with and benchmark open-weight LLMs —
-        all in one desktop app. Powered by <strong>llama.cpp</strong>, <strong>Apple MLX</strong>,
-        and <strong>TurboQuant</strong> adaptive quantization.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="#download" data-download>Get ChaosEngineAI</a>
-        <a class="btn ghost" href="#tour">See the tour</a>
+  <section class="hero" id="tour">
+    <div class="hero-split">
+      <div class="hero-text">
+        <img src="assets/logo-mark.png" alt="ChaosEngineAI" class="hero-logo" />
+        <h1>Your local AI workstation.</h1>
+        <p class="lede">
+          Discover, download, convert, serve, chat with, benchmark, and generate images from open-weight models —
+          all in one desktop app. Powered by <strong>llama.cpp</strong>, <strong>Apple MLX</strong>,
+          and <strong>TurboQuant</strong> adaptive quantization.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#download" data-download>Get ChaosEngineAI</a>
+          <a class="btn ghost" href="#features">See features</a>
+        </div>
+        <p class="sub">macOS · Linux · Windows · signed in-app updates</p>
       </div>
-      <p class="sub">macOS · Linux · Windows · signed in-app updates</p>
+      <div class="hero-gif">
+        <div class="tour-frame">
+          <img src="assets/tour.gif" alt="ChaosEngineAI walkthrough" />
+        </div>
+      </div>
     </div>
     <div class="grid-bg" aria-hidden="true"></div>
-  </section>
-
-  <section id="tour" class="section">
-    <h2>A tour of the app.</h2>
-    <p class="section-lede">Every screen, end-to-end — discover, launch, chat, serve, benchmark, convert.</p>
-    <div class="tour-frame">
-      <img src="assets/tour.gif" alt="ChaosEngineAI walkthrough" loading="lazy" />
-    </div>
   </section>
 
   <section id="features" class="section dark">
@@ -71,6 +70,9 @@
       <div class="feature"><h3>Chat</h3><p>Streaming multi-thread chat with document RAG attachments and image inputs for vision models.</p></div>
       <div class="feature"><h3>Server</h3><p>OpenAI-compatible HTTP server with bind address, request stats and a built-in test panel.</p></div>
       <div class="feature"><h3>Benchmarks</h3><p>Live tok/sec &amp; TTFT, prompt sets, full report cards, saved history with side-by-side diffs.</p></div>
+      <div class="feature accent"><h3>Image Discover</h3><p>Curated Stable Diffusion catalog — browse, filter by compatibility, and install with one click.</p></div>
+      <div class="feature accent"><h3>Image Studio</h3><p>Prompt-based image generation with aspect ratio, quality presets, negative prompts, and live progress.</p></div>
+      <div class="feature accent"><h3>Image Gallery</h3><p>Browse, filter, and reuse saved outputs — compare models and re-run with the same seed.</p></div>
       <div class="feature"><h3>Conversion</h3><p>Hugging Face → MLX with optional TurboQuant adaptive quant. Layer-by-layer live progress.</p></div>
       <div class="feature"><h3>Warm pool</h3><p>Recently-used models stay hot — subsequent loads are instant.</p></div>
       <div class="feature"><h3>In-app updates</h3><p>Signed, verified, cross-platform. Launch → prompt → relaunch.</p></div>
