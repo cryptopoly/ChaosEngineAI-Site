@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI — Local-first AI workstation" />
-<meta property="og:description" content="Discover, convert, run, chat with, benchmark, and generate images from open-weight models — all on your own machine. Pluggable cache compression with RotorQuant, TriAttention, and TurboQuant." />
+<meta property="og:description" content="Discover, convert, run, chat with, benchmark, and generate images from open-weight models — all on your own machine. DFlash/DDTree speculative decoding, five cache compression strategies, and local image generation." />
 <meta property="og:url" content="https://chaosengineai.com/" />
 <meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -29,6 +29,7 @@
   <nav>
     <a href="#tour">Tour</a>
     <a href="#features">Features</a>
+    <a href="#speculative">Speculative</a>
     <a href="#compression">Compression</a>
     <a href="#install">Install</a>
   </nav>
@@ -43,7 +44,8 @@
         <p class="lede">
           Discover, download, convert, serve, chat with, benchmark, and generate images from open-weight models —
           all in one desktop app. Powered by <strong>llama.cpp</strong>, <strong>Apple MLX</strong>,
-          and pluggable <strong>cache compression</strong> (RotorQuant, TriAttention, TurboQuant).
+          <strong>DFlash/DDTree speculative decoding</strong>, and five pluggable
+          <strong>cache compression</strong> strategies.
         </p>
         <div class="cta">
           <a class="btn primary" href="#download" data-download>Get ChaosEngineAI</a>
@@ -76,9 +78,39 @@
       <div class="feature"><h3>Conversion</h3><p>Hugging Face → MLX with optional compression. Layer-by-layer live progress.</p></div>
       <div class="feature"><h3>Warm pool</h3><p>Recently-used models stay hot — subsequent loads are instant.</p></div>
       <div class="feature"><h3>In-app updates</h3><p>Signed, verified, cross-platform. Launch → prompt → relaunch.</p></div>
+      <div class="feature accent"><h3>DFlash / DDTree</h3><p>Speculative decoding — 3-5x faster generation with zero quality loss. Tree-based candidate exploration for higher acceptance.</p></div>
+      <div class="feature"><h3>Agent Tools</h3><p>Web search, calculator, code executor, and file reader — models call tools during conversations.</p></div>
+      <div class="feature"><h3>Fine-Tuning</h3><p>LoRA adapter training for MLX models with configurable learning rate, rank, and epochs.</p></div>
+      <div class="feature"><h3>Plugins</h3><p>Extensible plugin system — cache strategies, inference engines, tools, model sources, and post-processors.</p></div>
       <div class="feature"><h3>Logs</h3><p>Live tail of the backend stream — load events, server requests, errors — with level filters.</p></div>
       <div class="feature"><h3>Settings</h3><p>Directories, default launch preferences, cache strategy, fused attention, FP16 layers.</p></div>
       <div class="feature"><h3>Telemetry</h3><p>Backend health, engine in use, hardware, memory pressure — always one glance away.</p></div>
+    </div>
+  </section>
+
+  <section id="speculative" class="section">
+    <div class="tq">
+      <div>
+        <span class="tag">Speculative decoding</span>
+        <h2>3-5x faster generation, zero quality loss.</h2>
+        <p>
+          A small draft model proposes a block of tokens; the target model verifies them in a single
+          forward pass. Accepted tokens are committed instantly. Two modes, one goal: faster inference.
+        </p>
+        <ul class="bullets">
+          <li><strong>DFlash</strong> — linear draft-and-verify with auto-resolved draft checkpoints from the z-lab collection</li>
+          <li><strong>DDTree</strong> — tree-structured candidate exploration using a max-probability heap, verified with a tree attention mask in one pass</li>
+          <li><strong>Supported families</strong> — Qwen3, Qwen3.5, Qwen3-Coder, LLaMA 3.1, gpt-oss, Kimi-K2.5</li>
+          <li><strong>Graceful fallback</strong> — DDTree falls back to DFlash, DFlash falls back to standard generation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-row"><span>Speedup</span><strong>3-5x</strong></div>
+        <div class="card-row"><span>Quality loss</span><strong>Zero</strong></div>
+        <div class="card-row"><span>DDTree budget</span><strong>0 – 64 nodes</strong></div>
+        <div class="card-row"><span>Backends</span><strong>MLX + dflash-mlx</strong></div>
+        <div class="card-row"><span>Cache</span><strong>Native f16 (auto)</strong></div>
+      </div>
     </div>
   </section>
 
@@ -96,12 +128,13 @@
           <li><strong>RotorQuant</strong> — 4D quaternion &amp; 2D Givens rotation compression (3-4 bit)</li>
           <li><strong>TriAttention</strong> — transparent vLLM-integrated cache budget management</li>
           <li><strong>TurboQuant</strong> — PolarQuant with fused Metal kernels for Apple Silicon</li>
+          <li><strong>ChaosEngine</strong> — PCA-based decorrelation + hybrid quantization (2-8 bit)</li>
           <li><strong>Native f16</strong> — full-precision baseline, always available</li>
         </ul>
       </div>
       <div class="card">
-        <div class="card-row"><span>Backends</span><strong>4 strategies</strong></div>
-        <div class="card-row"><span>Bit depths</span><strong>1 – 4 bit</strong></div>
+        <div class="card-row"><span>Backends</span><strong>5 strategies</strong></div>
+        <div class="card-row"><span>Bit depths</span><strong>1 – 8 bit</strong></div>
         <div class="card-row"><span>Compression</span><strong>up to ~7×</strong></div>
         <div class="card-row"><span>Install</span><strong>pip install</strong></div>
         <div class="card-row"><span>Platforms</span><strong>MLX · CUDA · Metal</strong></div>
