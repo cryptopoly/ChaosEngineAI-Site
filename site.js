@@ -123,6 +123,15 @@
         return;
       }
 
+      if (specMode === "mtplx") {
+        specBudgetInput.disabled = true;
+        specSpeed.textContent = "2.0x";
+        specAcceptance.textContent = "Lossless";
+        specRuntime.textContent = "Native MTP heads";
+        specNote.textContent = "MTPLX uses baked-in Multi-Token Prediction heads on the model itself. No draft model, zero quality drift, Apple Silicon only.";
+        return;
+      }
+
       if (specMode === "dflash") {
         specBudgetInput.disabled = true;
         specSpeed.textContent = "3.2x";

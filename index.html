@@ -6,11 +6,11 @@
 <title>ChaosEngineAI | Local AI control plane for chat, images, video, and serving</title>
 <meta
   name="description"
-  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, generate images and video, and expose an OpenAI-compatible API from one workspace. Speculative decoding via DFlash and DDTree, plus a full chaosengine-cli for headless automation."
+  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, generate images and video, and expose an OpenAI-compatible API from one workspace. Speculative decoding via MTPLX (native MTP on Apple Silicon), DFlash, and DDTree, plus a full chaosengine-cli for headless automation."
 />
 <meta
   name="keywords"
-  content="local AI, MLX, llama.cpp, vLLM, DFlash, DDTree, speculative decoding, KV cache, image generation, video generation, chaosengine-cli, OpenAI-compatible server"
+  content="local AI, MLX, llama.cpp, vLLM, MTPLX, MTP speculative decoding, DFlash, DDTree, speculative decoding, KV cache, image generation, video generation, chaosengine-cli, OpenAI-compatible server"
 />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
@@ -82,8 +82,8 @@
         <div class="hero-proof-grid">
           <div class="proof-card">
             <span class="proof-label">Speculative decoding</span>
-            <strong class="proof-value">DFlash + DDTree</strong>
-            <p>Tree-aware fast paths with clean fallback when a draft is unavailable.</p>
+            <strong class="proof-value">MTPLX + DFlash + DDTree</strong>
+            <p>Native MTP on Apple Silicon, draft-model DFlash, tree-aware DDTree. Backend picks the fastest path per model.</p>
           </div>
           <div class="proof-card">
             <span class="proof-label">Cache control</span>
@@ -257,13 +257,14 @@
         <article class="lab-card" data-reveal>
           <div class="lab-header">
             <span class="eyebrow-pill">Speculative decoding</span>
-            <h3>DFlash and DDTree</h3>
+            <h3>MTPLX, DFlash, DDTree</h3>
           </div>
           <p class="lab-copy">
-            Auto-resolved draft models, streamed runtime state, clean fallback when no fast path exists.
+            Native MTP heads on Apple Silicon, draft-model DFlash, tree-aware DDTree. Backend auto-picks based on the model.
           </p>
           <div class="mode-switch" role="tablist" aria-label="Speculative modes">
             <button class="mode-chip mode-chip-active" type="button" data-spec-mode="standard">Standard</button>
+            <button class="mode-chip" type="button" data-spec-mode="mtplx">MTPLX</button>
             <button class="mode-chip" type="button" data-spec-mode="dflash">DFlash</button>
             <button class="mode-chip" type="button" data-spec-mode="ddtree">DDTree</button>
           </div>
