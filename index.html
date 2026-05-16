@@ -6,14 +6,18 @@
 <title>ChaosEngineAI | Local AI control plane for chat, benchmarks, images, and serving</title>
 <meta
   name="description"
-  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, fine-tune, and generate images from one cinematic workspace."
+  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, fine-tune, and generate images from one cinematic workspace. Native MTP speculative decoding on Apple Silicon and a full chaosengine-cli for headless automation."
+/>
+<meta
+  name="keywords"
+  content="local AI, MLX, llama.cpp, vLLM, speculative decoding, MTP, MTPLX, KV cache, image generation, chaosengine-cli, OpenAI-compatible server"
 />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   property="og:description"
-  content="Run chat, image generation, benchmarks, prompt libraries, plugins, and OpenAI-compatible serving from one local desktop workspace."
+  content="Run chat, image generation, benchmarks, prompt libraries, plugins, and OpenAI-compatible serving from one local desktop workspace. Native MTP speculative decoding plus a full headless CLI."
 />
 <meta property="og:url" content="https://chaosengineai.com/" />
 <meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
@@ -23,7 +27,7 @@
 <meta name="twitter:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   name="twitter:description"
-  content="A swish local AI workstation for chat, benchmarks, image generation, plugins, and OpenAI-compatible serving."
+  content="A swish local AI workstation for chat, benchmarks, image generation, plugins, OpenAI-compatible serving, and a headless chaosengine-cli."
 />
 <meta name="twitter:image" content="https://chaosengineai.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,6 +53,8 @@
       <a href="#surfaces">Product</a>
       <a href="#runtime">Runtime Lab</a>
       <a href="#features">Features</a>
+      <a href="#cli">CLI</a>
+      <a href="/docs/">Docs</a>
       <a href="#download">Download</a>
     </nav>
     <div class="site-actions">
@@ -392,9 +398,21 @@
           <ul>
             <li>Throughput, perplexity, and task-accuracy benchmarks in the same UI.</li>
             <li>Persistent history with chart/table views, delta tables, and scatter plots.</li>
-            <li>DFlash and DDTree speculative decoding with draft-model auto-resolution.</li>
+            <li>DFlash, DDTree, and native MTP speculative decoding with draft-model auto-resolution.</li>
             <li>Runtime controls for cache bits, FP16 layers, context, fused attention, and fit-in-memory behavior.</li>
             <li>Live telemetry, backend health, logs, and orphaned-worker cleanup reporting.</li>
+          </ul>
+        </article>
+
+        <article class="cluster-card" data-reveal>
+          <span class="cluster-kicker">Native MTP speculative decoding</span>
+          <h3>1.8–2.2x faster generation with zero quality loss.</h3>
+          <ul>
+            <li>Native Multi-Token Prediction on Apple Silicon, no separate draft model required.</li>
+            <li>Backed by mtplx (Apache 2.0) running in an isolated venv so it cannot drift the main runtime.</li>
+            <li>Supported families include Qwen3.5, Qwen3.6, Qwen3-Coder-Next, DeepSeek V3/R1, and Youssofal MTPLX-Optimized variants.</li>
+            <li>One-click install from the Setup tab; auto-detected and offered when the loaded model can use it.</li>
+            <li>Graceful fallback to native generation when MTP is unavailable for the chosen model.</li>
           </ul>
         </article>
 
@@ -448,6 +466,38 @@ OPENAI_BASE_URL=http://127.0.0.1:8876/v1</pre>
           <span class="integration-label">Claude Code proxy</span>
           <pre>export ANTHROPIC_BASE_URL=http://127.0.0.1:8876/v1
 export ANTHROPIC_AUTH_TOKEN=not-needed</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-light" id="cli">
+      <div class="section-heading" data-reveal>
+        <span class="eyebrow-pill eyebrow-pill-dark">Headless automation</span>
+        <h2>chaosengine-cli drives the whole backend from the terminal.</h2>
+        <p>
+          A typed CLI wrapper that reaches every backend endpoint. Script chat, image generation, video, benchmarks,
+          setup, and diagnostics without opening the desktop app.
+        </p>
+      </div>
+
+      <div class="cluster-grid">
+        <article class="cluster-card" data-reveal>
+          <span class="cluster-kicker">Full-surface coverage</span>
+          <h3>95 ergonomic shortcuts plus a generic dispatcher.</h3>
+          <ul>
+            <li>95 typed shortcuts for the common paths: load, prompt, bench, image, video, server, setup.</li>
+            <li>Generic <code>call &lt;METHOD&gt; &lt;PATH&gt;</code> reaches the remaining backend routes — 100% of the 125 endpoints.</li>
+            <li>Python stdlib only. No extra dependencies, no virtualenv needed for the CLI itself.</li>
+            <li>JSON to stdout by default so it composes cleanly with <code>jq</code>, shell pipelines, and CI jobs.</li>
+            <li>Streaming and non-streaming generation modes with optional inline metrics.</li>
+          </ul>
+        </article>
+
+        <article class="integration-card" data-reveal>
+          <span class="integration-label">Quick start</span>
+          <pre>chaosengine-cli load Youssofal/Qwen3.6-27B-MTPLX-Optimized-Speed --spec
+chaosengine-cli prompt "Write a Rust quicksort" --stream --metrics
+chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
         </article>
       </div>
     </section>
@@ -526,6 +576,8 @@ export ANTHROPIC_AUTH_TOKEN=not-needed</pre>
         <p>Local AI control plane for chat, image generation, benchmarks, serving, and runtime experimentation.</p>
       </div>
       <div class="footer-links">
+        <a href="/docs/">Docs</a>
+        <a href="#cli">CLI</a>
         <a href="https://github.com/cryptopoly/ChaosEngineAI">GitHub</a>
         <a href="https://github.com/cryptopoly/ChaosEngineAI/releases">Releases</a>
         <a href="https://github.com/cryptopoly/ChaosEngineAI#readme">README</a>
