@@ -30,7 +30,12 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:"Manrope",system-ui,sans-serif;
-  background:linear-gradient(180deg,#091521 0%,#091521 24%,var(--paper) 24%,var(--paper) 100%);
+  /* Pixel-based stop so the dark band always ends just past the hero,
+     regardless of total page height. Percent-based stops let the dark
+     bleed under later sections on long pages, making dark-text sections
+     look ghostly. ~820px covers header + hero on most laptop viewports;
+     mobile breakpoint overrides this below. */
+  background:linear-gradient(180deg,#091521 0%,#091521 820px,var(--paper) 820px,var(--paper) 100%);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -733,17 +738,21 @@ button,input{font:inherit}
 }
 
 .lab-card{
-  padding:28px;
+  padding:32px;
   border:1px solid rgba(255,255,255,.1);
   border-radius:28px;
   background:rgba(255,255,255,.05);
+  /* Strategy grid wraps to 2-3 rows when 9 chips are present; keep
+     chips from butting into the card's right border with a small
+     inner overflow buffer. */
+  overflow:hidden;
 }
 
 .lab-header h3{
   margin:12px 0 0;
   font-family:"Space Grotesk",system-ui,sans-serif;
-  font-size:26px;
-  line-height:1.1;
+  font-size:22px;
+  line-height:1.2;
 }
 
 .lab-copy{
@@ -762,15 +771,16 @@ button,input{font:inherit}
 
 .mode-chip,
 .strategy-chip{
-  min-height:40px;
-  padding:0 14px;
+  min-height:36px;
+  padding:0 12px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.12);
   background:rgba(255,255,255,.04);
   color:#dce7ee;
   cursor:pointer;
-  font-size:13px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0;
 }
 
 .mode-chip-active,
@@ -828,7 +838,9 @@ button,input{font:inherit}
   display:block;
   margin-top:8px;
   color:#f3fbff;
-  font-size:24px;
+  font-size:20px;
+  line-height:1.2;
+  word-break:break-word;
 }
 
 .lab-note{
