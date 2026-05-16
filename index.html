@@ -166,6 +166,7 @@
         <div class="surface-tabs" role="tablist" aria-label="Product surfaces">
           <button class="surface-tab surface-tab-active" type="button" data-surface-button="discover">Discover</button>
           <button class="surface-tab" type="button" data-surface-button="chat">Chat</button>
+          <button class="surface-tab" type="button" data-surface-button="html-challenge">HTML Challenge</button>
           <button class="surface-tab" type="button" data-surface-button="benchmarks">Benchmarks</button>
           <button class="surface-tab" type="button" data-surface-button="image-studio">Image Studio</button>
           <button class="surface-tab" type="button" data-surface-button="video-studio">Video Studio</button>
@@ -562,6 +563,20 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
     "alt": "ChaosEngineAI Chat tab"
   },
   {
+    "id": "html-challenge",
+    "kicker": "Side-by-side HTML generation",
+    "title": "Race 2-4 models on the same prompt.",
+    "body": "Pick the models, set each slot's thinking mode + reasoning effort + seed, then issue one prompt. Every slot streams in parallel with a sandboxed live preview, automated HTML validation, and persistent history.",
+    "metrics": ["Live previews", "Per-slot seeds", "Retry + repair"],
+    "points": [
+      "Sandboxed iframe renders each model's output so script crashes surface immediately.",
+      "Automated valid / partial / script-error / blank-render / no-html validation per slot.",
+      "Re-open earlier runs from history; retry, continue, or repair failed slots in place."
+    ],
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/21.%20HTML%20Challenge.png",
+    "alt": "ChaosEngineAI HTML Challenge tab"
+  },
+  {
     "id": "benchmarks",
     "kicker": "Throughput, perplexity, task accuracy",
     "title": "Benchmark the tradeoff. Don't argue about it.",
@@ -600,7 +615,7 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
       "Cache strategies — FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache — apply to video DiTs.",
       "Per-step thumbnail previews so you can kill bad seeds before they finish."
     ],
-    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/7.%20Image%20Studio.png",
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/22.%20Video%20Gallery.png",
     "alt": "ChaosEngineAI Video Studio tab"
   },
   {
