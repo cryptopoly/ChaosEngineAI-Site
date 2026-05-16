@@ -210,6 +210,24 @@
         label: "TaylorSeer",
         platform: "Diffusion DiTs",
         note: "Polynomial extrapolation across denoise steps. Ships natively in diffusers 0.38."
+      },
+      magcache: {
+        ratio: 2.6,
+        label: "MagCache",
+        platform: "Diffusion DiTs (FLUX, calibrated)",
+        note: "Magnitude-aware step skipping calibrated for FLUX-family flow-match models."
+      },
+      pab: {
+        ratio: 2.0,
+        label: "PAB",
+        platform: "Diffusion DiTs",
+        note: "Pyramid Attention Broadcast — reuses attention maps across nearby denoise steps."
+      },
+      fastercache: {
+        ratio: 1.9,
+        label: "FasterCache",
+        platform: "Diffusion DiTs",
+        note: "Attention + feature caching with adaptive granularity per denoise band."
       }
     };
 
