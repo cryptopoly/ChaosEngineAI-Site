@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ChaosEngineAI | Local AI control plane for chat, benchmarks, images, and serving</title>
+<title>ChaosEngineAI | Local AI control plane for chat, images, video, and serving</title>
 <meta
   name="description"
-  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, fine-tune, and generate images from one cinematic workspace. Native MTP speculative decoding on Apple Silicon and a full chaosengine-cli for headless automation."
+  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, generate images and video, and expose an OpenAI-compatible API from one workspace. Speculative decoding via DFlash and DDTree, plus a full chaosengine-cli for headless automation."
 />
 <meta
   name="keywords"
-  content="local AI, MLX, llama.cpp, vLLM, speculative decoding, MTP, MTPLX, KV cache, image generation, chaosengine-cli, OpenAI-compatible server"
+  content="local AI, MLX, llama.cpp, vLLM, DFlash, DDTree, speculative decoding, KV cache, image generation, video generation, chaosengine-cli, OpenAI-compatible server"
 />
 <link rel="icon" type="image/png" href="assets/logo-mark.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   property="og:description"
-  content="Run chat, image generation, benchmarks, prompt libraries, plugins, and OpenAI-compatible serving from one local desktop workspace. Native MTP speculative decoding plus a full headless CLI."
+  content="Chat, image generation, video generation, benchmarks, prompts, plugins, and OpenAI-compatible serving from one local desktop workspace. DFlash and DDTree speculative decoding plus a headless CLI."
 />
 <meta property="og:url" content="https://chaosengineai.com/" />
 <meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   name="twitter:description"
-  content="A swish local AI workstation for chat, benchmarks, image generation, plugins, OpenAI-compatible serving, and a headless chaosengine-cli."
+  content="Local AI workstation for chat, benchmarks, image and video generation, plugins, OpenAI-compatible serving, and a headless chaosengine-cli."
 />
 <meta name="twitter:image" content="https://chaosengineai.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +36,7 @@
   href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
   rel="stylesheet"
 />
-<link rel="stylesheet" href="styles.css?v=10" />
+<link rel="stylesheet" href="styles.css?v=11" />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="cc576ff6-5db0-40a6-91dc-a39ac3b7d1ac" data-domains="chaosengineai.com,www.chaosengineai.com"></script>
 </head>
 <body>
@@ -68,13 +68,12 @@
       <div class="hero-copy" data-reveal>
         <div class="eyebrow-row">
           <span class="eyebrow-pill">Local-first AI desktop</span>
-          <span class="eyebrow-copy">MLX, llama.cpp, vLLM, image generation, and OpenAI-compatible serving</span>
+          <span class="eyebrow-copy">MLX, llama.cpp, vLLM, image, video, and OpenAI-compatible serving</span>
         </div>
-        <h1>Run the whole model stack from one cinematic control plane.</h1>
+        <h1>The whole model stack. One control plane.</h1>
         <p class="hero-lede">
-          ChaosEngineAI turns the usual pile of CLIs, scripts, and notebooks into a single desktop workspace.
-          Discover models, launch the right runtime, compare two systems side-by-side, benchmark real tradeoffs,
-          generate images locally, expose an API for your tools, and keep your favorite configs hot in memory.
+          Chat, images, video, benchmarks, and an OpenAI-compatible API — all local, all in one desktop app.
+          Discover models, pick a runtime, compare two side-by-side, and keep your favorite configs warm.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#download" data-download>Download ChaosEngineAI</a>
@@ -84,17 +83,17 @@
           <div class="proof-card">
             <span class="proof-label">Speculative decoding</span>
             <strong class="proof-value">DFlash + DDTree</strong>
-            <p>Tree-aware fast paths for local generation, with graceful fallback.</p>
+            <p>Tree-aware fast paths with clean fallback when a draft is unavailable.</p>
           </div>
           <div class="proof-card">
             <span class="proof-label">Cache control</span>
             <strong class="proof-value">9 strategies</strong>
-            <p>Native f16, TurboQuant, TriAttention, plus diffusion-only TeaCache, FBCache, TaylorSeer, MagCache, PAB, and FasterCache.</p>
+            <p>Native, TurboQuant, TriAttention, plus diffusion-only TeaCache, FBCache, TaylorSeer, MagCache, PAB, FasterCache.</p>
           </div>
           <div class="proof-card">
             <span class="proof-label">Evaluation</span>
             <strong class="proof-value">3 benchmark modes</strong>
-            <p>Throughput, perplexity, and task accuracy with saved comparisons.</p>
+            <p>Throughput, perplexity, and task accuracy. Saved, diffable, comparable.</p>
           </div>
         </div>
         <div class="hero-marquee" aria-label="Key features">
@@ -104,8 +103,8 @@
           <span>Vision Chat</span>
           <span>Local API</span>
           <span>Image Studio</span>
+          <span>Video Studio</span>
           <span>Plugins</span>
-          <span>Remote Providers</span>
         </div>
       </div>
 
@@ -174,32 +173,29 @@
     <section class="section section-light narrative-strip">
       <div class="section-heading narrow" data-reveal>
         <span class="eyebrow-pill eyebrow-pill-dark">Why it feels different</span>
-        <h2>ChaosEngineAI is not just another launcher.</h2>
+        <h2>Not a launcher. A control plane.</h2>
         <p>
-          It behaves like a proper local control plane: the model catalog, runtime tuning, tool calling, image pipeline,
-          server surface, benchmark rig, prompt library, and plugin system all live in one coherent workspace.
+          Catalog, runtime tuning, tool calling, image and video pipelines, server, benchmarks, prompt library,
+          and plugins — one workspace, one mental model.
         </p>
       </div>
       <div class="narrative-grid">
         <article class="narrative-card" data-reveal>
-          <h3>One place for runtime decisions</h3>
+          <h3>Runtime decisions in one place</h3>
           <p>
-            Decide between native f16, compressed KV caches, or speculative decoding without dropping to shell scripts or
-            juggling manual flags.
+            Native f16, compressed KV cache, speculative decoding. Pick from the UI, not a shell flag.
           </p>
         </article>
         <article class="narrative-card" data-reveal>
-          <h3>One place for proof</h3>
+          <h3>Proof, not vibes</h3>
           <p>
-            Run a benchmark, save the result, diff it later, and answer whether a new cache strategy or draft model is
-            actually worth it.
+            Run a benchmark, save it, diff it. Know whether a cache strategy or draft model is actually worth it.
           </p>
         </article>
         <article class="narrative-card" data-reveal>
-          <h3>One place for outputs</h3>
+          <h3>Outputs that stay together</h3>
           <p>
-            Threads, image generations, prompt templates, logs, adapters, and API integration snippets all stay inside
-            the same desktop surface.
+            Threads, images, videos, templates, logs, adapters, and API snippets all live in one desktop surface.
           </p>
         </article>
       </div>
@@ -207,11 +203,10 @@
 
     <section class="section section-cream" id="surfaces">
       <div class="section-heading" data-reveal>
-        <span class="eyebrow-pill eyebrow-pill-dark">Interactive product tour</span>
-        <h2>Move through the workspace the way a power user actually would.</h2>
+        <span class="eyebrow-pill eyebrow-pill-dark">Product tour</span>
+        <h2>The way a power user actually moves through it.</h2>
         <p>
-          Tap a surface to see how ChaosEngineAI handles model discovery, agent chat, benchmarks, image workflows, and
-          serving in the same runtime-aware desktop.
+          Discovery, chat, benchmarks, image and video studios, and OpenAI-compatible serving — one runtime-aware desktop.
         </p>
       </div>
 
@@ -221,6 +216,7 @@
           <button class="surface-tab" type="button" data-surface-button="chat">Chat</button>
           <button class="surface-tab" type="button" data-surface-button="benchmarks">Benchmarks</button>
           <button class="surface-tab" type="button" data-surface-button="image-studio">Image Studio</button>
+          <button class="surface-tab" type="button" data-surface-button="video-studio">Video Studio</button>
           <button class="surface-tab" type="button" data-surface-button="server">Server</button>
         </div>
 
@@ -251,10 +247,9 @@
     <section class="section section-dark runtime-lab" id="runtime">
       <div class="section-heading section-heading-light" data-reveal>
         <span class="eyebrow-pill">Runtime Lab</span>
-        <h2>Play with the knobs that actually matter.</h2>
+        <h2>The knobs that actually matter.</h2>
         <p>
-          These interactive modules mirror the product story: speculative decoding for speed, cache compression for
-          memory, and enough telemetry to understand the tradeoff instead of hand-waving it.
+          Speculative decoding for speed, cache compression for memory. Real telemetry, not hand-waving.
         </p>
       </div>
 
@@ -265,8 +260,7 @@
             <h3>DFlash and DDTree</h3>
           </div>
           <p class="lab-copy">
-            ChaosEngineAI can auto-resolve draft models, stream the real runtime state, and fall back cleanly if the
-            fast path is unavailable.
+            Auto-resolved draft models, streamed runtime state, clean fallback when no fast path exists.
           </p>
           <div class="mode-switch" role="tablist" aria-label="Speculative modes">
             <button class="mode-chip mode-chip-active" type="button" data-spec-mode="standard">Standard</button>
@@ -304,14 +298,15 @@
             <h3>Estimate the memory win</h3>
           </div>
           <p class="lab-copy">
-            ChaosEngineAI exposes each strategy as a first-class runtime choice instead of burying it in a config file.
+            Each strategy is a first-class runtime choice — not a buried config flag.
           </p>
           <div class="strategy-grid" role="tablist" aria-label="Cache strategies">
             <button class="strategy-chip strategy-chip-active" type="button" data-strategy="native">Native f16</button>
-            <button class="strategy-chip" type="button" data-strategy="rotorquant">RotorQuant</button>
-            <button class="strategy-chip" type="button" data-strategy="triattention">TriAttention</button>
             <button class="strategy-chip" type="button" data-strategy="turboquant">TurboQuant</button>
-            <button class="strategy-chip" type="button" data-strategy="chaosengine">ChaosEngine</button>
+            <button class="strategy-chip" type="button" data-strategy="triattention">TriAttention</button>
+            <button class="strategy-chip" type="button" data-strategy="fbcache">FBCache</button>
+            <button class="strategy-chip" type="button" data-strategy="teacache">TeaCache</button>
+            <button class="strategy-chip" type="button" data-strategy="taylorseer">TaylorSeer</button>
           </div>
           <label class="slider-label" for="context-window">
             Context window
@@ -347,11 +342,10 @@
 
     <section class="section section-light" id="features">
       <div class="section-heading" data-reveal>
-        <span class="eyebrow-pill eyebrow-pill-dark">Complete feature spread</span>
-        <h2>The stack is broader than a launcher and tighter than a lab notebook.</h2>
+        <span class="eyebrow-pill eyebrow-pill-dark">Feature spread</span>
+        <h2>Broader than a launcher. Tighter than a notebook.</h2>
         <p>
-          ChaosEngineAI blends local inference, agent tooling, image workflows, evaluation, and developer integrations
-          into one product surface.
+          Local inference, agent tooling, image and video workflows, evaluation, and developer integrations — one surface.
         </p>
       </div>
 
@@ -360,67 +354,67 @@
           <span class="cluster-kicker">Chat and prompting</span>
           <h3>Threads that remember their runtime.</h3>
           <ul>
-            <li>Multi-thread chat with pinned sessions and per-thread model/runtime memory.</li>
-            <li>Document uploads with chunked retrieval, inline citations, and session-level file management.</li>
-            <li>Vision-friendly image attachments plus optional reasoning mode and collapsible thinking traces.</li>
-            <li>Tool calling with web search, calculator, file reader, and code executor cards.</li>
-            <li>Prompt Library with searchable templates, tags, categories, and one-click apply to chat.</li>
+            <li>Multi-thread chat with pinned sessions and per-thread model + runtime memory.</li>
+            <li>Document uploads with chunked retrieval and inline citations.</li>
+            <li>Vision attachments, reasoning mode, and collapsible thinking traces.</li>
+            <li>Tool calling: web search, calculator, file reader, code executor.</li>
+            <li>Prompt Library with searchable templates, tags, and one-click apply.</li>
           </ul>
         </article>
 
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Models and runtimes</span>
-          <h3>From discovery to serving without leaving the app.</h3>
+          <h3>Discovery to serving without leaving the app.</h3>
           <ul>
-            <li>Curated text and image catalogs plus Hugging Face browsing and local availability tracking.</li>
-            <li>Multiple model directories, including custom stores, Ollama, LM Studio, and shared folders.</li>
+            <li>Curated text, image, and video catalogs plus Hugging Face browsing.</li>
+            <li>Multiple model directories — custom stores, shared folders, ad-hoc paths.</li>
             <li>Apple Silicon conversion from Hugging Face checkpoints to MLX with live progress.</li>
-            <li>Warm-pool runtime reuse for instant reactivation of recent model profiles.</li>
-            <li>OpenAI-compatible local server with LAN mode, auto-start, test commands, and live request stats.</li>
+            <li>Warm-pool runtime reuse for instant reactivation of recent profiles.</li>
+            <li>OpenAI-compatible local server with LAN mode, auto-start, and live request stats.</li>
           </ul>
         </article>
 
         <article class="cluster-card" data-reveal>
-          <span class="cluster-kicker">Images and media</span>
-          <h3>A full local image pipeline, not an afterthought.</h3>
+          <span class="cluster-kicker">Image Studio</span>
+          <h3>A full local image pipeline.</h3>
           <ul>
             <li>Image Discover for curated diffusion models and compatibility-aware installs.</li>
-            <li>Image Studio for prompt-driven generation with aspect ratios, quality presets, seeds, and negatives.</li>
-            <li>Image Gallery for saved outputs, reruns, seed variation, and disk reveal actions.</li>
-            <li>Model preload and unload controls so the diffusion pipeline behaves like the text runtime.</li>
-            <li>Saved artifact metadata that helps you reproduce what actually worked.</li>
+            <li>Prompt-driven generation with aspect ratios, seeds, negatives, and quality presets.</li>
+            <li>Gallery with reruns, seed variation, and one-click reveal on disk.</li>
+            <li>Preload and unload controls so diffusion behaves like the text runtime.</li>
+            <li>Saved metadata so you can reproduce what actually worked.</li>
+          </ul>
+        </article>
+
+        <article class="cluster-card" data-reveal>
+          <span class="cluster-kicker">Video Studio</span>
+          <h3>Local text-to-video, same workspace.</h3>
+          <ul>
+            <li>Native MLX text-to-video on Apple Silicon for LTX-2 and Wan2.1 / Wan2.2.</li>
+            <li>One-click Wan install: downloads checkpoints and converts to MLX in the background.</li>
+            <li>Cross-platform fallback via diffusers and stable-diffusion.cpp on CUDA (HunyuanVideo, CogVideoX, Mochi).</li>
+            <li>Cache strategies — FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache — apply to video DiTs too.</li>
+            <li>Live per-step thumbnail previews so you can kill bad seeds early.</li>
           </ul>
         </article>
 
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Performance and proof</span>
-          <h3>Measure the tradeoff instead of guessing.</h3>
+          <h3>Measure the tradeoff. Don't guess.</h3>
           <ul>
             <li>Throughput, perplexity, and task-accuracy benchmarks in the same UI.</li>
-            <li>Persistent history with chart/table views, delta tables, and scatter plots.</li>
-            <li>DFlash, DDTree, and native MTP speculative decoding with draft-model auto-resolution.</li>
-            <li>Runtime controls for cache bits, FP16 layers, context, fused attention, and fit-in-memory behavior.</li>
-            <li>Live telemetry, backend health, logs, and orphaned-worker cleanup reporting.</li>
+            <li>Persistent history with chart and table views, delta tables, scatter plots.</li>
+            <li>DFlash and DDTree speculative decoding with draft-model auto-resolution.</li>
+            <li>Runtime controls for cache bits, FP16 layers, context, fused attention.</li>
+            <li>Live telemetry, backend health, logs, and orphaned-worker cleanup.</li>
           </ul>
         </article>
 
         <article class="cluster-card" data-reveal>
-          <span class="cluster-kicker">Native MTP speculative decoding</span>
-          <h3>1.8–2.2x faster generation with zero quality loss.</h3>
-          <ul>
-            <li>Native Multi-Token Prediction on Apple Silicon, no separate draft model required.</li>
-            <li>Backed by mtplx (Apache 2.0) running in an isolated venv so it cannot drift the main runtime.</li>
-            <li>Supported families include Qwen3.5, Qwen3.6, Qwen3-Coder-Next, DeepSeek V3/R1, and Youssofal MTPLX-Optimized variants.</li>
-            <li>One-click install from the Setup tab; auto-detected and offered when the loaded model can use it.</li>
-            <li>Graceful fallback to native generation when MTP is unavailable for the chosen model.</li>
-          </ul>
-        </article>
-
-        <article class="cluster-card" data-reveal>
-          <span class="cluster-kicker">Extensibility and integrations</span>
+          <span class="cluster-kicker">Extensibility</span>
           <h3>Built for people who wire tools together.</h3>
           <ul>
-            <li>Plugin system for cache strategies, inference engines, tools, model sources, and post-processors.</li>
+            <li>Plugin system for cache strategies, engines, tools, sources, and post-processors.</li>
             <li>LoRA adapter discovery plus fine-tuning hooks for local workflows.</li>
             <li>Remote provider configs for OpenAI-compatible APIs, stored locally with masked keys.</li>
             <li>Integration snippets for Continue.dev, Goose, Cursor, and Claude Code via the local API.</li>
@@ -433,10 +427,9 @@
     <section class="section section-accent integrations" id="integrations">
       <div class="section-heading section-heading-tight" data-reveal>
         <span class="eyebrow-pill eyebrow-pill-dark">Drop-in local backend</span>
-        <h2>Point your other tools at ChaosEngineAI.</h2>
+        <h2>Point your other tools at it.</h2>
         <p>
-          The built-in OpenAI-compatible server turns the desktop app into a local backend for coding tools, agents, and
-          editor plugins.
+          The built-in OpenAI-compatible server turns the app into a local backend for editors, agents, and CLIs.
         </p>
       </div>
 
@@ -473,31 +466,30 @@ export ANTHROPIC_AUTH_TOKEN=not-needed</pre>
     <section class="section section-light" id="cli">
       <div class="section-heading" data-reveal>
         <span class="eyebrow-pill eyebrow-pill-dark">Headless automation</span>
-        <h2>chaosengine-cli drives the whole backend from the terminal.</h2>
+        <h2>chaosengine-cli drives the whole backend.</h2>
         <p>
-          A typed CLI wrapper that reaches every backend endpoint. Script chat, image generation, video, benchmarks,
-          setup, and diagnostics without opening the desktop app.
+          A typed CLI that reaches every backend route. Script chat, image, video, benchmarks, setup, and diagnostics.
         </p>
       </div>
 
       <div class="cluster-grid">
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Full-surface coverage</span>
-          <h3>95 ergonomic shortcuts plus a generic dispatcher.</h3>
+          <h3>95 shortcuts plus a generic dispatcher.</h3>
           <ul>
-            <li>95 typed shortcuts for the common paths: load, prompt, bench, image, video, server, setup.</li>
-            <li>Generic <code>call &lt;METHOD&gt; &lt;PATH&gt;</code> reaches the remaining backend routes — 100% of the 125 endpoints.</li>
-            <li>Python stdlib only. No extra dependencies, no virtualenv needed for the CLI itself.</li>
-            <li>JSON to stdout by default so it composes cleanly with <code>jq</code>, shell pipelines, and CI jobs.</li>
-            <li>Streaming and non-streaming generation modes with optional inline metrics.</li>
+            <li>95 typed shortcuts: load, prompt, bench, image, video, server, setup.</li>
+            <li>Generic <code>call &lt;METHOD&gt; &lt;PATH&gt;</code> reaches the remaining routes — 100% of the 125 endpoints.</li>
+            <li>Python stdlib only. No extra dependencies.</li>
+            <li>JSON to stdout — composes cleanly with <code>jq</code> and CI jobs.</li>
+            <li>Streaming and non-streaming modes with optional inline metrics.</li>
           </ul>
         </article>
 
         <article class="integration-card" data-reveal>
           <span class="integration-label">Quick start</span>
-          <pre>chaosengine-cli load Youssofal/Qwen3.6-27B-MTPLX-Optimized-Speed --spec
+          <pre>chaosengine-cli load mlx-community/Qwen3.6-35B-A3B-4bit --spec
 chaosengine-cli prompt "Write a Rust quicksort" --stream --metrics
-chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
+chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-T2V-1.3B</pre>
         </article>
       </div>
     </section>
@@ -505,10 +497,9 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
     <section class="section section-download" id="download">
       <div class="section-heading section-heading-light" data-reveal>
         <span class="eyebrow-pill">Download and build</span>
-        <h2>Install it fast, or tear it open from source.</h2>
+        <h2>Install fast. Or build from source.</h2>
         <p>
-          Signed release builds are available for macOS, Linux, and Windows. If you want to hack on the product, the
-          source stack is Tauri, React, TypeScript, Rust, and Python.
+          Signed release builds for macOS, Linux, and Windows. Source stack: Tauri, React, TypeScript, Rust, Python.
         </p>
       </div>
 
@@ -521,17 +512,17 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
         <a class="download-card" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest">
           <span class="download-kicker">Linux</span>
           <h3>AppImage and .deb</h3>
-          <p>Portable packages for local workstation setups and test rigs.</p>
+          <p>Portable packages for workstation setups and test rigs.</p>
         </a>
         <a class="download-card" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest">
           <span class="download-kicker">Windows</span>
           <h3>NSIS installer</h3>
-          <p>Desktop install path for x64 machines and local experimentation.</p>
+          <p>x64 desktop install path with bundled runtime.</p>
         </a>
         <a class="download-card" href="https://github.com/cryptopoly/ChaosEngineAI#readme">
           <span class="download-kicker">Source</span>
           <h3>Tauri plus Python</h3>
-          <p>Build it yourself with Rust, Node 20+, Python 3.11+, and the staged runtime.</p>
+          <p>Build it yourself with Rust, Node 20+, and Python 3.11+.</p>
         </a>
       </div>
 
@@ -573,7 +564,7 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
           <img src="assets/logo-mark.svg" alt="" />
           <strong>ChaosEngineAI</strong>
         </div>
-        <p>Local AI control plane for chat, image generation, benchmarks, serving, and runtime experimentation.</p>
+        <p>Local AI control plane for chat, image, video, benchmarks, and OpenAI-compatible serving.</p>
       </div>
       <div class="footer-links">
         <a href="/docs/">Docs</a>
@@ -590,42 +581,42 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
 [
   {
     "id": "discover",
-    "kicker": "Model catalogs plus launch controls",
+    "kicker": "Model catalogs + launch controls",
     "title": "Find the right model, not just a file.",
-    "body": "Curated families, capability filters, direct Hugging Face inspection, and launch-aware variants help you move from browsing to running without context switching.",
+    "body": "Curated families, capability filters, direct Hugging Face inspection, and launch-aware variants — browsing to running without context switching.",
     "metrics": ["Capability filters", "Hub search", "One-click launch"],
     "points": [
-      "Browse model families by coding, vision, reasoning, multilingual, tool use, and more.",
-      "See which variants already live on disk before you click download or launch.",
-      "Jump straight from discovery into conversion, chat, or server mode."
+      "Browse families by coding, vision, reasoning, multilingual, tool use.",
+      "See which variants live on disk before you click download or launch.",
+      "Jump from discovery into conversion, chat, or server mode."
     ],
     "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/2.%20Discover_v2.png",
     "alt": "ChaosEngineAI Discover tab"
   },
   {
     "id": "chat",
-    "kicker": "Threads, tools, citations, and compare mode",
-    "title": "A local chat surface that remembers how it was run.",
-    "body": "Each thread carries its own model, cache strategy, context length, and speculative settings. Add docs, feed images to vision models, inspect tool calls, or compare two models side-by-side.",
+    "kicker": "Threads, tools, citations, compare mode",
+    "title": "A chat surface that remembers how it was run.",
+    "body": "Each thread carries its own model, cache strategy, context length, and spec-dec settings. Add docs, feed images to vision models, or compare two runtimes side-by-side.",
     "metrics": ["Pinned threads", "Tool traces", "Reasoning panel"],
     "points": [
-      "Upload session documents and get inline citations back from chunked retrieval.",
-      "Toggle tools like web search, calculator, code executor, and file reader inside chats.",
-      "Switch to Compare mode to stream the same prompt through two runtime profiles."
+      "Upload docs and get inline citations from chunked retrieval.",
+      "Toggle tools — web search, calculator, code executor, file reader.",
+      "Compare mode streams the same prompt through two runtime profiles."
     ],
     "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/12.%20Chat_v2.png",
     "alt": "ChaosEngineAI Chat tab"
   },
   {
     "id": "benchmarks",
-    "kicker": "Throughput, perplexity, and task accuracy",
-    "title": "Benchmark the tradeoff instead of arguing about it.",
-    "body": "ChaosEngineAI stores the output of real runs, then lets you filter, chart, diff, and compare cache strategies and runtime profiles without leaving the app.",
+    "kicker": "Throughput, perplexity, task accuracy",
+    "title": "Benchmark the tradeoff. Don't argue about it.",
+    "body": "Real runs, saved and diffable. Filter, chart, and compare cache strategies and runtime profiles without leaving the app.",
     "metrics": ["History diffs", "Scatter plots", "Saved runs"],
     "points": [
-      "Run throughput benchmarks for latency and tok/sec.",
-      "Measure perplexity for quality retention and task accuracy for multiple-choice evals.",
-      "Compare two saved runs with delta tables and visual history views."
+      "Throughput for latency and tok/sec.",
+      "Perplexity for quality retention; task accuracy for multiple-choice evals.",
+      "Diff two saved runs with delta tables and visual history."
     ],
     "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/13.%20Benchmarks_v2.png",
     "alt": "ChaosEngineAI Benchmarks tab"
@@ -633,27 +624,41 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
   {
     "id": "image-studio",
     "kicker": "Local diffusion models and saved outputs",
-    "title": "Generate locally, then iterate with the settings that worked.",
-    "body": "The image workflow mirrors the text runtime: discover models, preload them, generate with control over ratios and seeds, then reuse the winning setup from the gallery.",
+    "title": "Generate locally. Iterate with the settings that worked.",
+    "body": "Discover models, preload them, generate with control over ratios and seeds, then reuse the winning setup from the gallery.",
     "metrics": ["Seed reuse", "Model preload", "Saved metadata"],
     "points": [
-      "Prompt-based image generation with aspect presets, negative prompts, and quality tiers.",
-      "Recent outputs stay attached to model and generation metadata so you can rerun them cleanly.",
+      "Prompt-based generation with aspect presets, negatives, and quality tiers.",
+      "Outputs stay attached to model + generation metadata for clean reruns.",
       "Unload one pipeline and warm another without leaving the desktop."
     ],
     "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/7.%20Image%20Studio.png",
     "alt": "ChaosEngineAI Image Studio tab"
   },
   {
+    "id": "video-studio",
+    "kicker": "Text-to-video, all local",
+    "title": "Text-to-video that runs on your machine.",
+    "body": "Native MLX on Apple Silicon for LTX-2 and Wan2.1 / Wan2.2. Diffusers + stable-diffusion.cpp on CUDA for HunyuanVideo, CogVideoX, and Mochi. Same workspace, same controls as Image Studio.",
+    "metrics": ["MLX on macOS", "CUDA on Linux + Windows", "Live thumbnails"],
+    "points": [
+      "One-click Wan install: downloads checkpoints and converts to MLX in the background.",
+      "Cache strategies — FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache — apply to video DiTs.",
+      "Per-step thumbnail previews so you can kill bad seeds before they finish."
+    ],
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/7.%20Image%20Studio.png",
+    "alt": "ChaosEngineAI Video Studio tab"
+  },
+  {
     "id": "server",
-    "kicker": "OpenAI-compatible serving for local tools",
-    "title": "Turn the desktop app into a local API backend.",
-    "body": "Serve the currently-loaded model through an OpenAI-compatible API, expose it on your LAN if you want to, and copy integration/test commands straight from the UI.",
+    "kicker": "OpenAI-compatible serving",
+    "title": "The desktop app is a local API backend.",
+    "body": "Serve the loaded model through an OpenAI-compatible API, expose on LAN if you want, and copy integration snippets from the UI.",
     "metrics": ["LAN mode", "Warm pool", "Curl snippets"],
     "points": [
-      "Start, stop, and restart the local server from the same place you manage models.",
-      "Keep multiple runtime profiles warm and activate the one you want instantly.",
-      "Use Continue.dev, Cursor, Goose, or Claude Code against the local endpoint."
+      "Start, stop, and restart the local server alongside your models.",
+      "Keep multiple runtime profiles warm; activate instantly.",
+      "Point Continue.dev, Cursor, Goose, or Claude Code at the local endpoint."
     ],
     "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/11.%20Server_v2.png",
     "alt": "ChaosEngineAI Server tab"
@@ -666,7 +671,7 @@ chaosengine-cli bench mlx-community/Qwen3.6-35B-A3B-4bit --runs 3</pre>
     document.querySelector(".sister-sites")?.setAttribute("data-show", "false");
   }
 </script>
-<script defer src="site.js?v=1"></script>
+<script defer src="site.js?v=2"></script>
 <script defer src="download.js?v=2"></script>
 </body>
 </html>

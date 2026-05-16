@@ -170,31 +170,37 @@
         ratio: 1,
         label: "Native f16",
         platform: "All runtimes",
-        note: "Maximum fidelity. Great for baseline measurement and any workflow that wants the simplest runtime path."
-      },
-      rotorquant: {
-        ratio: 3.2,
-        label: "RotorQuant",
-        platform: "CUDA and Metal",
-        note: "Rotation-based KV compression for bigger contexts without full native-cache cost."
-      },
-      triattention: {
-        ratio: 4.3,
-        label: "TriAttention",
-        platform: "Linux and CUDA",
-        note: "A scheduler-aware vLLM path for hard cache budgets when you are running on Linux GPUs."
+        note: "Maximum fidelity. The simplest path; great for baseline measurement."
       },
       turboquant: {
         ratio: 4.8,
         label: "TurboQuant",
-        platform: "Apple Silicon",
-        note: "The fast Apple-focused path with fused kernels and aggressive compression."
+        platform: "Apple Silicon + llama.cpp turbo",
+        note: "Fused kernels and aggressive KV compression for long contexts on text models."
       },
-      chaosengine: {
-        ratio: 3.7,
-        label: "ChaosEngine",
-        platform: "PyTorch, llama.cpp, vLLM",
-        note: "PCA-driven decorrelation plus hybrid quantization for tighter memory budgets and broad backend coverage."
+      triattention: {
+        ratio: 4.3,
+        label: "TriAttention",
+        platform: "Apple Silicon (MLX)",
+        note: "Norm-scored token eviction inside the MLX worker for hard cache budgets."
+      },
+      fbcache: {
+        ratio: 1.8,
+        label: "FBCache",
+        platform: "Diffusion DiTs (image + video)",
+        note: "First Block Cache via diffusers 0.36. Roughly 1.8x speedup with imperceptible drift."
+      },
+      teacache: {
+        ratio: 2.1,
+        label: "TeaCache",
+        platform: "Diffusion DiTs (FLUX family)",
+        note: "Timestep embedding cache for FLUX, HunyuanVideo, LTX, CogVideoX, Mochi."
+      },
+      taylorseer: {
+        ratio: 2.4,
+        label: "TaylorSeer",
+        platform: "Diffusion DiTs",
+        note: "Polynomial extrapolation across denoise steps. Ships natively in diffusers 0.38."
       }
     };
 
