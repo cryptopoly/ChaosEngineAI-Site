@@ -30,13 +30,10 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:"Manrope",system-ui,sans-serif;
-  /* Pixel-based stop so the dark band always ends just past the hero,
-     regardless of total page height. Percent-based stops let the dark
-     bleed under later sections on long pages, making dark-text sections
-     look ghostly. ~820px covers header + hero on most laptop viewports;
-     mobile breakpoint overrides this below. */
-  background:linear-gradient(180deg,#091521 0%,#091521 820px,var(--paper) 820px,var(--paper) 100%);
-  color:var(--text);
+  /* Dark-green page background — same teal-tinted navy as the hero card.
+     Subtle vertical gradient adds depth without breaking the cohesion. */
+  background:#091521;
+  color:var(--text-dark);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
@@ -317,9 +314,28 @@ button,input{font:inherit}
 .hero-stage{
   position:relative;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
+  gap:18px;
   min-height:100%;
+}
+
+.hero-platforms{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:var(--text-dark-soft);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.hero-platforms .dot{
+  color:rgba(159,180,194,.5);
+  font-weight:700;
 }
 
 .hero-orbit{
@@ -514,8 +530,10 @@ button,input{font:inherit}
   padding:96px 40px;
 }
 
-.section-light{color:var(--text)}
-.section-cream{color:var(--text)}
+.section-light,
+.section-cream{
+  color:var(--text-dark);
+}
 .section-dark{
   color:var(--text-dark);
   border-radius:36px;
@@ -525,8 +543,9 @@ button,input{font:inherit}
 
 .section-accent{
   border-radius:36px;
-  background:linear-gradient(135deg,#d7f2eb 0%,#f4e3c8 100%);
-  box-shadow:var(--shadow);
+  color:var(--text-dark);
+  background:linear-gradient(135deg,#0d2630 0%,#143240 60%,#0b1e26 100%);
+  box-shadow:var(--shadow-dark);
 }
 
 .section-download{
@@ -547,12 +566,21 @@ button,input{font:inherit}
 
 .section-heading p{
   margin:18px 0 0;
-  color:var(--text-soft);
+  color:var(--text-dark-soft);
   font-size:18px;
   line-height:1.72;
 }
 
 .section-heading-light p{color:var(--text-dark-soft)}
+
+/* All eyebrow pills on the dark page now use the mint chip style.
+   eyebrow-pill-dark is kept as an alias so any existing markup still
+   renders correctly without invisible light-on-light text. */
+.eyebrow-pill-dark{
+  background:rgba(75,227,155,.14);
+  border:1px solid rgba(75,227,155,.26);
+  color:#bcf9d9;
+}
 .section-heading-tight{max-width:760px}
 .narrow{max-width:760px}
 
@@ -571,10 +599,11 @@ button,input{font:inherit}
 .cluster-card,
 .download-card,
 .integration-card{
-  background:var(--card);
-  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line-dark);
   border-radius:var(--radius-xl);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-dark);
+  color:var(--text-dark);
 }
 
 .narrative-card{
@@ -590,17 +619,17 @@ button,input{font:inherit}
 
 .narrative-card p{
   margin:14px 0 0;
-  color:var(--text-soft);
+  color:var(--text-dark-soft);
   line-height:1.72;
 }
 
 .surface-shell{
   margin-top:34px;
   padding:24px;
-  border:1px solid rgba(8,19,28,.1);
+  border:1px solid var(--line-dark);
   border-radius:32px;
-  background:rgba(255,255,255,.55);
-  box-shadow:var(--shadow);
+  background:rgba(255,255,255,.04);
+  box-shadow:var(--shadow-dark);
   backdrop-filter:blur(16px);
 }
 
@@ -613,18 +642,18 @@ button,input{font:inherit}
 .surface-tab{
   min-height:42px;
   padding:0 16px;
-  border:1px solid rgba(8,19,28,.12);
+  border:1px solid var(--line-dark);
   border-radius:999px;
-  background:#fff;
-  color:var(--ink-2);
+  background:rgba(255,255,255,.04);
+  color:#dce7ee;
   font-weight:800;
   cursor:pointer;
 }
 
 .surface-tab-active{
-  border-color:rgba(22,180,179,.3);
-  background:linear-gradient(135deg,rgba(22,180,179,.12),rgba(75,227,155,.16));
-  color:var(--ink);
+  border-color:rgba(75,227,155,.34);
+  background:rgba(75,227,155,.14);
+  color:#e8fff4;
 }
 
 .surface-panel{
@@ -663,7 +692,7 @@ button,input{font:inherit}
 
 .surface-copy p{
   margin:16px 0 0;
-  color:var(--text-soft);
+  color:var(--text-dark-soft);
   line-height:1.74;
   font-size:17px;
 }
@@ -679,8 +708,9 @@ button,input{font:inherit}
   min-height:34px;
   padding:0 12px;
   border-radius:999px;
-  background:rgba(8,19,28,.06);
-  color:var(--ink-2);
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line-dark);
+  color:var(--text-dark);
   font-size:13px;
   font-weight:700;
   display:inline-flex;
@@ -698,7 +728,7 @@ button,input{font:inherit}
 .surface-points li{
   position:relative;
   padding-left:18px;
-  color:var(--text-soft);
+  color:var(--text-dark-soft);
   line-height:1.65;
 }
 
@@ -715,10 +745,10 @@ button,input{font:inherit}
 
 .surface-frame{
   overflow:hidden;
-  border:1px solid rgba(8,19,28,.12);
+  border:1px solid var(--line-dark);
   border-radius:24px;
   background:#061018;
-  box-shadow:0 28px 60px rgba(8,19,28,.2);
+  box-shadow:var(--shadow-dark);
 }
 
 .surface-frame img{
@@ -896,7 +926,7 @@ button,input{font:inherit}
 .cluster-card li{
   position:relative;
   padding-left:18px;
-  color:var(--text-soft);
+  color:var(--text-dark-soft);
   line-height:1.66;
 }
 
@@ -914,7 +944,7 @@ button,input{font:inherit}
 .cluster-card li code{
   padding:1px 6px;
   border-radius:6px;
-  background:rgba(9,21,33,.08);
+  background:rgba(255,255,255,.08);
   color:var(--text-dark);
   font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
@@ -932,7 +962,7 @@ button,input{font:inherit}
 
 .integration-card{
   padding:26px 24px;
-  background:rgba(255,255,255,.78);
+  background:rgba(255,255,255,.04);
 }
 
 .integration-card pre{
