@@ -203,7 +203,7 @@
     }
 
     body.appendChild(el('p', { class: 'dl-foot' },
-      'Apache 2.0 · macOS-first · Linux & Windows are experimental. ',
+      'Apache 2.0 · signed builds for macOS, Linux, and Windows. ',
       el('a', { href: RELEASES_PAGE, target: '_blank', rel: 'noopener' }, 'All releases →'),
     ));
   }
