@@ -125,7 +125,7 @@
 
       if (specMode === "mtplx") {
         specBudgetInput.disabled = true;
-        specSpeed.textContent = "2.0x";
+        specSpeed.textContent = "1.8x to 2.2x";
         specAcceptance.textContent = "Lossless";
         specRuntime.textContent = "Native MTP heads";
         specNote.textContent = "MTPLX uses baked-in Multi-Token Prediction heads on the model itself. No draft model, zero quality drift, Apple Silicon only.";
@@ -134,22 +134,20 @@
 
       if (specMode === "dflash") {
         specBudgetInput.disabled = true;
-        specSpeed.textContent = "3.2x";
-        specAcceptance.textContent = "Around 70%";
+        specSpeed.textContent = "Up to about 2x";
+        specAcceptance.textContent = "Depends on the text";
         specRuntime.textContent = "Draft and verify";
-        specNote.textContent = "DFlash uses a smaller draft model to propose tokens, then verifies them in one pass with the target model.";
+        specNote.textContent = "DFlash uses a smaller draft model to propose tokens, then verifies them in one pass with the target model. Measured on Apple Silicon: Qwen3-4B about 113 vs 53 tokens/s; code and reasoning on a 30B-class 4-bit model run 1.4 to 1.7 times faster. Creative writing can run slower, so leave it off for stories.";
         return;
       }
 
       specBudgetInput.disabled = false;
-      const speed = 3.1 + (budget / 64) * 1.6;
-      const acceptance = 61 + (budget / 64) * 27;
-      specSpeed.textContent = `${speed.toFixed(1)}x`;
-      specAcceptance.textContent = `${Math.round(acceptance)}% accepted`;
+      specSpeed.textContent = "Model-dependent";
+      specAcceptance.textContent = budget === 0 ? "Single chain" : "Tree of candidates";
       specRuntime.textContent = `Tree budget ${budget}`;
       specNote.textContent = budget === 0
         ? "Budget 0 falls back to linear DFlash. Increase the tree budget to explore more candidates in parallel."
-        : "DDTree expands multiple draft paths, verifies the tree in one pass, and accepts the longest validated branch.";
+        : "DDTree expands multiple draft paths, verifies the tree in one pass, and accepts the longest validated branch. It runs on models made of plain attention layers; hybrid models such as Qwen3.5 and 3.6 use linear DFlash.";
     }
 
     specButtons.forEach((button) => {
@@ -185,13 +183,13 @@
         ratio: 4.8,
         label: "TurboQuant",
         platform: "Apple Silicon + llama.cpp turbo",
-        note: "Fused kernels and aggressive KV compression for long contexts on text models."
+        note: "A memory saver, not a speed option. Shrinks the KV cache for long contexts at the cost of slower generation."
       },
       triattention: {
         ratio: 4.3,
         label: "TriAttention",
-        platform: "Apple Silicon (MLX)",
-        note: "Norm-scored token eviction inside the MLX worker for hard cache budgets."
+        platform: "Linux + CUDA (via vLLM)",
+        note: "KV cache compression inside vLLM's scheduler for hard cache budgets. Not supported on macOS."
       },
       fbcache: {
         ratio: 1.8,

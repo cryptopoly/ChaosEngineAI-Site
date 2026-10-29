@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ChaosEngineAI | Local AI control plane for chat, images, video, and serving</title>
+<title>ChaosEngineAI | Local AI control plane for chat, voice, images, video, and serving</title>
 <meta
   name="description"
-  content="ChaosEngineAI is a local-first desktop control plane for models. Discover, launch, compare, benchmark, serve, generate images and video, and expose an OpenAI-compatible API from one workspace. Speculative decoding via MTPLX (native MTP on Apple Silicon), DFlash, and DDTree, plus a full chaosengine-cli for headless automation."
+  content="ChaosEngineAI is a local-first desktop app for open-weight models. Talk to your models by voice, transcribe audio with speaker labels, chat, generate images and video (LTX with sound on Apple Silicon), benchmark, and expose an OpenAI-compatible API from one workspace. Nothing is uploaded. Speculative decoding via MTPLX, DFlash, and DDTree, plus a headless chaosengine-cli."
 />
 <meta
   name="keywords"
-  content="local AI, MLX, llama.cpp, vLLM, MTPLX, MTP speculative decoding, DFlash, DDTree, speculative decoding, KV cache, image generation, video generation, chaosengine-cli, OpenAI-compatible server"
+  content="local AI, voice chat, speech to text, text to speech, transcription, speaker labels, MLX, llama.cpp, vLLM, MTPLX, MTP speculative decoding, DFlash, DDTree, speculative decoding, KV cache, image generation, video generation, LTX video, chaosengine-cli, OpenAI-compatible server"
 />
 <link rel="icon" type="image/png" href="assets/logo-mark.png?v=2" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   property="og:description"
-  content="Chat, image generation, video generation, benchmarks, prompts, plugins, and OpenAI-compatible serving from one local desktop workspace. DFlash and DDTree speculative decoding plus a headless CLI."
+  content="Voice calls, chat, image and video generation, benchmarks, prompts, plugins, and OpenAI-compatible serving from one local desktop workspace. Nothing is uploaded. DFlash and DDTree speculative decoding plus a headless CLI."
 />
 <meta property="og:url" content="https://chaosengineai.com/" />
 <meta property="og:image" content="https://chaosengineai.com/assets/og-image.png" />
@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="ChaosEngineAI | Local AI control plane" />
 <meta
   name="twitter:description"
-  content="Local AI workstation for chat, benchmarks, image and video generation, plugins, OpenAI-compatible serving, and a headless chaosengine-cli."
+  content="Local AI workstation for voice, chat, benchmarks, image and video generation, plugins, OpenAI-compatible serving, and a headless chaosengine-cli."
 />
 <meta name="twitter:image" content="https://chaosengineai.com/assets/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +36,7 @@
   href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
   rel="stylesheet"
 />
-<link rel="stylesheet" href="styles.css?v=18" />
+<link rel="stylesheet" href="styles.css?v=19" />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="cc576ff6-5db0-40a6-91dc-a39ac3b7d1ac" data-domains="chaosengineai.com,www.chaosengineai.com"></script>
 </head>
 <body>
@@ -68,7 +68,7 @@
       <div class="hero-copy" data-reveal>
         <h1>Your local AI workstation.</h1>
         <p class="hero-lede">
-          Chat, images, video, benchmarks, and an OpenAI-compatible API — local, in one desktop app.
+          Voice, chat, images, video, benchmarks, and an OpenAI-compatible API — local, in one desktop app.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#download" data-download>Download ChaosEngineAI</a>
@@ -76,19 +76,19 @@
         </div>
         <div class="hero-proof-grid">
           <div class="proof-card">
+            <span class="proof-label">New in v0.9.9</span>
+            <strong class="proof-value">Voice, all local</strong>
+            <p>Call your model and talk over it, dictate, hear replies, and transcribe files with speaker labels. Nothing is uploaded.</p>
+          </div>
+          <div class="proof-card">
             <span class="proof-label">Speculative decoding</span>
             <strong class="proof-value">MTPLX + DFlash + DDTree</strong>
-            <p>Native MTP on Apple Silicon, draft-model DFlash, tree-aware DDTree. Backend picks the fastest path per model.</p>
+            <p>Native MTP on Apple Silicon, draft-model DFlash, tree-aware DDTree. The backend routes each model to a path it supports.</p>
           </div>
           <div class="proof-card">
             <span class="proof-label">Cache control</span>
             <strong class="proof-value">7 + 2 strategies</strong>
-            <p>Native, TurboQuant, TriAttention, FBCache, TeaCache, TaylorSeer, PAB. Two more — MagCache, FasterCache — reachable via CLI / API for power users.</p>
-          </div>
-          <div class="proof-card">
-            <span class="proof-label">Evaluation</span>
-            <strong class="proof-value">3 benchmark modes</strong>
-            <p>Throughput, perplexity, and task accuracy. Saved, diffable, comparable.</p>
+            <p>Native, TurboQuant (memory saver), TriAttention (Linux + CUDA), plus FBCache, TeaCache, TaylorSeer and PAB for diffusion. MagCache and FasterCache via CLI / API.</p>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@
           </div>
           <div class="console-main">
             <div class="console-visual">
-              <img src="assets/tour.gif" alt="ChaosEngineAI product walkthrough" />
+              <img src="https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/dashboard.png" alt="ChaosEngineAI dashboard" />
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
         <span class="eyebrow-pill eyebrow-pill-dark">Why it feels different</span>
         <h2>Not a launcher. A control plane.</h2>
         <p>
-          Catalog, runtime tuning, tool calling, image and video pipelines, server, benchmarks, prompt library,
+          Models, runtime tuning, voice, tool calling, image and video pipelines, server, benchmarks, prompt library,
           and plugins — one workspace, one mental model.
         </p>
       </div>
@@ -147,7 +147,7 @@
         <article class="narrative-card" data-reveal>
           <h3>Outputs that stay together</h3>
           <p>
-            Threads, images, videos, templates, logs, adapters, and API snippets all live in one desktop surface.
+            Threads, images, videos, recordings, transcripts, templates, logs, adapters, and API snippets all live in one desktop surface.
           </p>
         </article>
       </div>
@@ -158,14 +158,15 @@
         <span class="eyebrow-pill eyebrow-pill-dark">Product tour</span>
         <h2>The way a power user actually moves through it.</h2>
         <p>
-          Discovery, chat, benchmarks, image and video studios, and OpenAI-compatible serving — one runtime-aware desktop.
+          Voice, chat, models, benchmarks, image and video studios, and OpenAI-compatible serving — one runtime-aware desktop.
         </p>
       </div>
 
       <div class="surface-shell" data-reveal>
         <div class="surface-tabs" role="tablist" aria-label="Product surfaces">
-          <button class="surface-tab surface-tab-active" type="button" data-surface-button="discover">Discover</button>
+          <button class="surface-tab surface-tab-active" type="button" data-surface-button="voice">Voice</button>
           <button class="surface-tab" type="button" data-surface-button="chat">Chat</button>
+          <button class="surface-tab" type="button" data-surface-button="models">Models</button>
           <button class="surface-tab" type="button" data-surface-button="html-challenge">HTML Challenge</button>
           <button class="surface-tab" type="button" data-surface-button="benchmarks">Benchmarks</button>
           <button class="surface-tab" type="button" data-surface-button="image-studio">Image Studio</button>
@@ -175,11 +176,11 @@
 
         <div class="surface-panel">
           <div class="surface-copy">
-            <span class="surface-kicker" id="surface-kicker">Model catalogs + launch controls</span>
-            <h3 id="surface-title">Find the right model, not just a file.</h3>
+            <span class="surface-kicker" id="surface-kicker">Voice calls, dictation, read-aloud, Voice Studio</span>
+            <h3 id="surface-title">Talk to your models. Nothing is uploaded.</h3>
             <p id="surface-body">
-              Curated families, capability filters, direct Hugging Face inspection, and launch-ready variants help you
-              move from browsing to running without context switching.
+              Press Call in Chat and talk: the app hears when you stop, the model answers out loud, and you can talk over
+              it to interrupt. Transcribe recordings with speaker labels, then edit, export, or send them to a chat.
             </p>
             <div class="surface-metrics" id="surface-metrics"></div>
             <ul class="surface-points" id="surface-points"></ul>
@@ -188,8 +189,8 @@
             <div class="surface-frame">
               <img
                 id="surface-image"
-                src="https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/2.%20Discover_v2.png"
-                alt="ChaosEngineAI Discover tab"
+                src="https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/voice-studio.png"
+                alt="ChaosEngineAI Voice Studio"
               />
             </div>
           </div>
@@ -228,7 +229,7 @@
           <input id="spec-budget" class="range-input" type="range" min="0" max="64" step="4" value="24" />
           <div class="lab-stat-grid">
             <div class="lab-stat">
-              <span>Estimated speedup</span>
+              <span>Speedup</span>
               <strong id="spec-speed">1.0x</strong>
             </div>
             <div class="lab-stat">
@@ -300,11 +301,23 @@
         <span class="eyebrow-pill eyebrow-pill-dark">Feature spread</span>
         <h2>Broader than a launcher. Tighter than a notebook.</h2>
         <p>
-          Local inference, agent tooling, image and video workflows, evaluation, and developer integrations — one surface.
+          Local inference, voice, agent tooling, image and video workflows, evaluation, and developer integrations — one surface.
         </p>
       </div>
 
       <div class="cluster-grid">
+        <article class="cluster-card" data-reveal>
+          <span class="cluster-kicker">Voice</span>
+          <h3>Talk to your models. Nothing is uploaded.</h3>
+          <ul>
+            <li>Voice calls in Chat: press Call, talk, and interrupt the model mid-answer. Every turn is saved in the thread.</li>
+            <li>Dictation from the composer, and a speaker button on every reply (or have replies read automatically).</li>
+            <li>Voice Studio: transcribe files or recordings in a queue with speaker labels, translate to English, edit, and export TXT, Markdown, SRT, VTT or JSON.</li>
+            <li>Speak turns long text into speech, saved as WAV or MP3. Voice Library keeps every recording, transcript and clip.</li>
+            <li>Install the voice pack once (about 2 GB). Apple Silicon: Parakeet, Nemotron 3.5 or Whisper, plus Kokoro. Windows and Linux: Whisper and Kokoro, newer and less tested.</li>
+          </ul>
+        </article>
+
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Chat and prompting</span>
           <h3>Threads that remember their runtime.</h3>
@@ -319,13 +332,25 @@
 
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Models and runtimes</span>
-          <h3>Discovery to serving without leaving the app.</h3>
+          <h3>From browsing to serving without leaving the app.</h3>
           <ul>
-            <li>Curated text, image, and video catalogs plus Hugging Face browsing.</li>
-            <li>Multiple model directories — custom stores, shared folders, ad-hoc paths.</li>
-            <li>Apple Silicon conversion from Hugging Face checkpoints to MLX with live progress.</li>
+            <li>One Models page each for Chat, Images and Video, with curated catalogs, Hugging Face browsing, and filters for Installed, Available, Downloading or Needs attention.</li>
+            <li>Best fit for your hardware: every row says Fits, Tight, Won't fit, or Not for this machine, marks estimates as estimates, and each family points at the newest model that fits.</li>
+            <li>Multiple model directories, and Apple Silicon conversion from Hugging Face checkpoints to MLX with live progress.</li>
             <li>Warm-pool runtime reuse for instant reactivation of recent profiles.</li>
             <li>OpenAI-compatible local server with LAN mode, auto-start, and live request stats.</li>
+          </ul>
+        </article>
+
+        <article class="cluster-card" data-reveal>
+          <span class="cluster-kicker">Added in v0.9.9</span>
+          <h3>New models, ready to run.</h3>
+          <ul>
+            <li>Nemotron 3.5 Bolt (NVIDIA): a 4B-effective assistant model for voice and device assistants. The official 6 GB build runs on macOS, Windows and Linux; with its DFlash drafter an M4 Max goes from about 62 to about 160 tokens per second.</li>
+            <li>Granite Switch 4.1 (IBM, Apache 2.0): the 8B and 30B Granite models in one checkpoint with built-in decision and safety adapters. The app runs the chat model.</li>
+            <li>LFM3-1.7B (Liquid AI): 256K context, 16 languages, tool calling. About 250 tokens per second on an M4 Max with the official MLX 4-bit build (about 1 GB), plus an official GGUF for every platform.</li>
+            <li>Nemotron 3.5 speech recognition (Apple Silicon): 40 languages with automatic language detection. A 5-second clip takes about 0.14 seconds on an M4 Max once the model is loaded.</li>
+            <li>Iris-3B Turbo on Apple Silicon (Apache 2.0): four steps, a 1024 by 1024 image in about 18 seconds on an M4 Max, using 7.5 GB of memory.</li>
           </ul>
         </article>
 
@@ -333,11 +358,11 @@
           <span class="cluster-kicker">Image Studio</span>
           <h3>A full local image pipeline.</h3>
           <ul>
-            <li>Image Discover for curated diffusion models and compatibility-aware installs.</li>
-            <li>Prompt-driven generation with aspect ratios, seeds, negatives, and quality presets.</li>
-            <li>Gallery with reruns, seed variation, and one-click reveal on disk.</li>
-            <li>Preload and unload controls so diffusion behaves like the text runtime.</li>
-            <li>Saved metadata so you can reproduce what actually worked.</li>
+            <li>Images Models page for curated diffusion models, with fit badges and compatibility-aware installs.</li>
+            <li>"Recommended for this machine": steps, size and other settings with a reason and a Measured or Estimated tag, applied in one click. On an M4 Max, FLUX 3 Klein at 8 steps takes 40 seconds instead of 70 with no visible difference.</li>
+            <li>Bigger images: each model has its own size limit (FLUX.2 and Qwen-Image-2.1 up to 4096) and the memory check counts pixels. On a 64 GB Mac, FLUX 3 Klein made a 3072 by 3072 image in under two minutes; 4096 by 4096 was refused with a size that fits.</li>
+            <li>Aspect ratios, seeds, negatives, and quality presets; a gallery with reruns, seed variation, reveal on disk, and saved metadata so you can reproduce what worked.</li>
+            <li>Preload and unload controls so diffusion behaves like the text runtime. Controls an engine ignores are hidden.</li>
           </ul>
         </article>
 
@@ -345,11 +370,12 @@
           <span class="cluster-kicker">Video Studio</span>
           <h3>Local text-to-video, same workspace.</h3>
           <ul>
-            <li>Native MLX text-to-video on Apple Silicon for LTX-2 and Wan2.1 / Wan2.2.</li>
-            <li>One-click Wan install: downloads checkpoints and converts to MLX in the background.</li>
+            <li>LTX-2.3 and LTX-2.5 on Apple Silicon run on their own MLX engine and write sound with the picture. Clips with sound show a Sound badge in the gallery and play with sound.</li>
+            <li>Measured on an M4 Max: a 4-second 768 by 512 clip takes about 2.5 minutes with LTX-2.3 and 128 seconds with LTX-2.5, which is now the default LTX model.</li>
+            <li>LTX-2.5 is a gated Hugging Face repo: accept its licence on the model page and give your token read access to public gated repos.</li>
+            <li>Wan 2.1 and Wan 2.2 A14B: one-click install downloads the checkpoint and converts it to MLX in the background.</li>
             <li>Cross-platform fallback via diffusers and stable-diffusion.cpp on CUDA (HunyuanVideo, CogVideoX, Mochi).</li>
-            <li>Cache strategies — FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache — apply to video DiTs too.</li>
-            <li>Live per-step thumbnail previews so you can kill bad seeds early.</li>
+            <li>"Recommended for this machine" settings, cache strategies (FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache), and live per-step thumbnails on diffusers models so you can kill bad seeds early.</li>
           </ul>
         </article>
 
@@ -359,7 +385,7 @@
           <ul>
             <li>Throughput, perplexity, and task-accuracy benchmarks in the same UI.</li>
             <li>Persistent history with chart and table views, delta tables, scatter plots.</li>
-            <li>DFlash and DDTree speculative decoding with draft-model auto-resolution.</li>
+            <li>DFlash and DDTree speculative decoding on Apple Silicon with draft-model auto-resolution. On a 30B-class 4-bit model, code and reasoning replies run 1.4 to 1.7 times faster; creative writing can run slower, so leave it off for stories.</li>
             <li>Runtime controls for cache bits, FP16 layers, context, fused attention.</li>
             <li>Live telemetry, backend health, logs, and orphaned-worker cleanup.</li>
           </ul>
@@ -373,7 +399,7 @@
             <li>LoRA adapter discovery plus fine-tuning hooks for local workflows.</li>
             <li>Remote provider configs for OpenAI-compatible APIs, stored locally with masked keys.</li>
             <li>Integration snippets for Continue.dev, Goose, Cursor, and Claude Code via the local API.</li>
-            <li>Signed desktop releases with in-app updates across macOS, Linux, and Windows.</li>
+            <li>In-app updates across macOS, Linux, and Windows, delivered as cryptographically signed packages.</li>
           </ul>
         </article>
       </div>
@@ -430,10 +456,10 @@ export ANTHROPIC_AUTH_TOKEN=not-needed</pre>
       <div class="cluster-grid">
         <article class="cluster-card" data-reveal>
           <span class="cluster-kicker">Full-surface coverage</span>
-          <h3>95 shortcuts plus a generic dispatcher.</h3>
+          <h3>Typed shortcuts plus a generic dispatcher.</h3>
           <ul>
-            <li>95 typed shortcuts: load, prompt, bench, image, video, server, setup.</li>
-            <li>Generic <code>call &lt;METHOD&gt; &lt;PATH&gt;</code> reaches the remaining routes — 100% of the 125 endpoints.</li>
+            <li>Typed shortcuts for load, prompt, bench, image, video, server, setup, and diagnostics.</li>
+            <li>Generic <code>call &lt;METHOD&gt; &lt;PATH&gt;</code> reaches every other backend route.</li>
             <li>Python stdlib only. No extra dependencies.</li>
             <li>JSON to stdout — composes cleanly with <code>jq</code> and CI jobs.</li>
             <li>Streaming and non-streaming modes with optional inline metrics.</li>
@@ -444,7 +470,7 @@ export ANTHROPIC_AUTH_TOKEN=not-needed</pre>
           <span class="integration-label">Quick start</span>
           <pre>chaosengine-cli load mlx-community/Qwen3.6-35B-A3B-4bit --spec
 chaosengine-cli prompt "Write a Rust quicksort" --stream --metrics
-chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-T2V-1.3B</pre>
+chaosengine-cli video-generate "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-T2V-1.3B</pre>
         </article>
       </div>
     </section>
@@ -454,7 +480,7 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
         <span class="eyebrow-pill">Download and build</span>
         <h2>Install fast. Or build from source.</h2>
         <p>
-          Signed release builds for macOS, Linux, and Windows. Source stack: Tauri, React, TypeScript, Rust, Python.
+          Release builds for macOS, Linux, and Windows with signed in-app updates. Source stack: Tauri, React, TypeScript, Rust, Python.
         </p>
       </div>
 
@@ -472,7 +498,7 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
         <a class="download-card" href="https://github.com/cryptopoly/ChaosEngineAI/releases/latest">
           <span class="download-kicker">Windows</span>
           <h3>NSIS installer</h3>
-          <p>x64 desktop install path with bundled runtime.</p>
+          <p>x64 desktop install path with bundled runtime. Not code-signed yet, so SmartScreen warns on first run.</p>
         </a>
         <a class="download-card" href="https://github.com/cryptopoly/ChaosEngineAI#readme">
           <span class="download-kicker">Source</span>
@@ -519,7 +545,7 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
           <img src="assets/logo-mark.svg?v=2" alt="" />
           <strong>ChaosEngineAI</strong>
         </div>
-        <p>Local AI control plane for chat, image, video, benchmarks, and OpenAI-compatible serving.</p>
+        <p>Local AI control plane for voice, chat, image, video, benchmarks, and OpenAI-compatible serving.</p>
       </div>
       <div class="footer-links">
         <a href="/docs/">Docs</a>
@@ -535,32 +561,46 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
 <script id="surface-data" type="application/json">
 [
   {
-    "id": "discover",
-    "kicker": "Model catalogs + launch controls",
-    "title": "Find the right model, not just a file.",
-    "body": "Curated families, capability filters, direct Hugging Face inspection, and launch-aware variants — browsing to running without context switching.",
-    "metrics": ["Capability filters", "Hub search", "One-click launch"],
+    "id": "voice",
+    "kicker": "Voice calls, dictation, read-aloud, Voice Studio",
+    "title": "Talk to your models. Nothing is uploaded.",
+    "body": "Press Call in Chat and talk: the app hears when you stop, the model answers out loud, and you can talk over it to interrupt. Transcribe recordings with speaker labels, then edit, export, or send them to a chat.",
+    "metrics": ["Voice calls", "Speaker labels", "Runs locally"],
     "points": [
-      "Browse families by coding, vision, reasoning, multilingual, tool use.",
-      "See which variants live on disk before you click download or launch.",
-      "Jump from discovery into conversion, chat, or server mode."
+      "Dictate from the composer, and use the speaker button on any reply, or have replies read automatically.",
+      "Voice Studio queues files or recordings, labels speakers, translates to English, and exports TXT, Markdown, SRT, VTT or JSON.",
+      "Speak turns long text into speech with pauses and voice previews, saved as WAV or MP3. Voice Library keeps it all."
     ],
-    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/2.%20Discover_v2.png",
-    "alt": "ChaosEngineAI Discover tab"
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/voice-studio.png",
+    "alt": "ChaosEngineAI Voice Studio"
   },
   {
     "id": "chat",
-    "kicker": "Threads, tools, citations, compare mode",
+    "kicker": "Threads, voice calls, tools, citations, compare mode",
     "title": "A chat surface that remembers how it was run.",
-    "body": "Each thread carries its own model, cache strategy, context length, and spec-dec settings. Add docs, feed images to vision models, or compare two runtimes side-by-side.",
+    "body": "Each thread carries its own model, cache strategy, context length, and spec-dec settings. Add docs, feed images to vision models, talk to the model by voice, or compare two runtimes side-by-side.",
     "metrics": ["Pinned threads", "Tool traces", "Reasoning panel"],
     "points": [
       "Upload docs and get inline citations from chunked retrieval.",
       "Toggle tools — web search, calculator, code executor, file reader.",
       "Compare mode streams the same prompt through two runtime profiles."
     ],
-    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/12.%20Chat_v2.png",
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/chat.png",
     "alt": "ChaosEngineAI Chat tab"
+  },
+  {
+    "id": "models",
+    "kicker": "One Models page per area",
+    "title": "Find the model that fits your machine.",
+    "body": "Chat, Images and Video each have a single Models page. Filter by Installed, Available, Downloading or Needs attention, and see whether each model fits your hardware before you download it.",
+    "metrics": ["Fit badges", "Hub search", "One-click launch"],
+    "points": [
+      "Every row says Fits, Tight, Won't fit, or Not for this machine, and marks estimates as estimates.",
+      "Each family points at its best fit: the newest model that fits comfortably.",
+      "A model your machine cannot run is hidden unless it is already on disk. Deleting image or video files asks first."
+    ],
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/chat-models.png",
+    "alt": "ChaosEngineAI Chat Models page"
   },
   {
     "id": "html-challenge",
@@ -592,30 +632,30 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
   },
   {
     "id": "image-studio",
-    "kicker": "Local diffusion models and saved outputs",
-    "title": "Generate locally. Iterate with the settings that worked.",
-    "body": "Discover models, preload them, generate with control over ratios and seeds, then reuse the winning setup from the gallery.",
-    "metrics": ["Seed reuse", "Model preload", "Saved metadata"],
+    "kicker": "Local diffusion models, recommended settings, saved outputs",
+    "title": "Generate locally. Start from settings that suit your machine.",
+    "body": "Pick a model on the Images Models page, preload it, and generate. Image Studio shows recommended settings for your hardware, each with a reason and a Measured or Estimated tag, and applies them in one click.",
+    "metrics": ["Recommended settings", "Seed reuse", "Per-model size limits"],
     "points": [
-      "Prompt-based generation with aspect presets, negatives, and quality tiers.",
-      "Outputs stay attached to model + generation metadata for clean reruns.",
-      "Unload one pipeline and warm another without leaving the desktop."
+      "On an M4 Max, FLUX 3 Klein at 8 steps takes 40 seconds instead of 70 with no visible difference.",
+      "No fixed 2048 px cap: each model has its own limit (FLUX.2 and Qwen-Image-2.1 up to 4096) and the memory check counts pixels.",
+      "Iris-3B Turbo on Apple Silicon: a 1024 by 1024 image in about 18 seconds on an M4 Max, using 7.5 GB of memory."
     ],
-    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/7.%20Image%20Studio.png",
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/image-studio.png",
     "alt": "ChaosEngineAI Image Studio tab"
   },
   {
     "id": "video-studio",
-    "kicker": "Text-to-video, all local",
+    "kicker": "Text-to-video with sound, all local",
     "title": "Text-to-video that runs on your machine.",
-    "body": "Native MLX on Apple Silicon for LTX-2 and Wan2.1 / Wan2.2. Diffusers + stable-diffusion.cpp on CUDA for HunyuanVideo, CogVideoX, and Mochi. Same workspace, same controls as Image Studio.",
-    "metrics": ["MLX on macOS", "CUDA on Linux + Windows", "Live thumbnails"],
+    "body": "LTX-2.3 and LTX-2.5 run on their own MLX engine on Apple Silicon and write sound with the picture. Diffusers + stable-diffusion.cpp on CUDA cover HunyuanVideo, CogVideoX, and Mochi. Same workspace, same controls as Image Studio.",
+    "metrics": ["LTX with sound", "MLX on macOS", "CUDA on Linux + Windows"],
     "points": [
-      "One-click Wan install: downloads checkpoints and converts to MLX in the background.",
-      "Cache strategies — FBCache, TeaCache, TaylorSeer, MagCache, PAB, FasterCache — apply to video DiTs.",
-      "Per-step thumbnail previews so you can kill bad seeds before they finish."
+      "Measured on an M4 Max: a 4-second 768 by 512 clip takes about 2.5 minutes with LTX-2.3 and 128 seconds with LTX-2.5.",
+      "Clips with sound show a Sound badge in the gallery and play with sound. The sound follows your prompt.",
+      "Wan 2.1 and Wan 2.2 A14B install in one click and convert to MLX in the background."
     ],
-    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/Video%20Gallery%20v4.png",
+    "image": "https://raw.githubusercontent.com/cryptopoly/ChaosEngineAI/main/Screenshots/v0.9.9/video-studio.png",
     "alt": "ChaosEngineAI Video Studio tab"
   },
   {
@@ -640,7 +680,7 @@ chaosengine-cli video "Aurora over a glacier, drone shot" --model Wan-AI/Wan2.1-
     document.querySelector(".sister-sites")?.setAttribute("data-show", "false");
   }
 </script>
-<script defer src="site.js?v=2"></script>
-<script defer src="download.js?v=2"></script>
+<script defer src="site.js?v=3"></script>
+<script defer src="download.js?v=3"></script>
 </body>
 </html>

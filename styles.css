@@ -1327,7 +1327,7 @@ button,input{font:inherit}
 
 @media (max-width:1180px){
   .hero{
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
     gap:40px;
   }
 
@@ -1338,7 +1338,7 @@ button,input{font:inherit}
   .integration-grid,
   .download-grid,
   .lab-grid{
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
   }
 
   .console-footer{
@@ -1353,10 +1353,6 @@ button,input{font:inherit}
 }
 
 @media (max-width:900px){
-  body{
-    background:linear-gradient(180deg,#091521 0%,#091521 20%,var(--paper) 20%,var(--paper) 100%);
-  }
-
   .site-header{
     flex-wrap:wrap;
     justify-content:center;
@@ -1395,7 +1391,7 @@ button,input{font:inherit}
     border-bottom:1px solid rgba(255,255,255,.06);
   }
 
-  .console-visual{min-height:320px}
+  .console-visual{min-height:0}
 
   .console-overlay{
     width:calc(100% - 36px);
